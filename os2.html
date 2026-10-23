@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>OS T2 Exam Master Preparation | LJU Comprehensive Portal</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: #0b0d13;
+      --card-border: #1e2436;
+      --card-hover: #151a27;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-blue: #0070f3;
+      --accent-cyan: #00dfd8;
+      --accent-green: #10b981;
+      --accent-red: #f43f5e;
+      --accent-amber: #f59e0b;
+      --accent-purple: #a855f7;
+      --code-bg: #06080d;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Geist", Helvetica, Arial, sans-serif;
+      --font-mono: "Fira Code", "JetBrains Mono", Consolas, "SF Mono", monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #050608; }
+    ::-webkit-scrollbar-thumb { background: #23293d; border-radius: 4px; }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+
+    /* Sticky Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 10px 0 6px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #fff;
+    }
+    .logo span {
+      background: linear-gradient(135deg, #0070f3, #00dfd8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge-lju {
+      background: rgba(0, 112, 243, 0.15);
+      border: 1px solid rgba(0, 112, 243, 0.35);
+      color: var(--accent-cyan);
+      font-size: 0.68rem;
+      padding: 2px 7px;
+      border-radius: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* Navigation Bar */
+    .tab-bar {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    .tab-bar::-webkit-scrollbar { height: 3px; }
+    .tab-btn {
+      background: #0d1017;
+      border: 1px solid #1f273b;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 20px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+    .tab-btn:hover { color: #fff; border-color: #333f5c; }
+    .tab-btn.active {
+      background: #151d2f;
+      border-color: var(--accent-blue);
+      color: #fff;
+      box-shadow: 0 0 10px rgba(0, 112, 243, 0.25);
+    }
+
+    /* Tab Views */
+    .tab-content { display: none; padding-top: 20px; animation: fadeIn 0.2s ease; }
+    .tab-content.active { display: block; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .badge-tag {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .bt-u6 { background: rgba(0, 112, 243, 0.18); color: #60a5fa; border: 1px solid rgba(0, 112, 243, 0.35); }
+    .bt-u7 { background: rgba(0, 223, 216, 0.18); color: #2dd4bf; border: 1px solid rgba(0, 223, 216, 0.35); }
+    .bt-u8 { background: rgba(168, 85, 247, 0.18); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.35); }
+    .bt-u9 { background: rgba(245, 158, 11, 0.18); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.35); }
+    .bt-u10 { background: rgba(16, 185, 129, 0.18); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.35); }
+
+    /* Rules & Cheat Box */
+    .rules-box {
+      background: #070a12;
+      border: 1px solid #1a253d;
+      border-left: 3px solid var(--accent-cyan);
+      border-radius: 0 6px 6px 0;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+    }
+    .rules-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .problem-box {
+      background: #080a10;
+      border-left: 3px solid var(--accent-blue);
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.9rem;
+      color: #cbd5e1;
+      margin-bottom: 14px;
+    }
+    .problem-box b { color: #fff; }
+
+    .formula-card {
+      background: #06080e;
+      border: 1px solid #1a2236;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      color: #38bdf8;
+      margin: 10px 0;
+      line-height: 1.5;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 12px 0;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      -webkit-overflow-scrolling: touch;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.84rem;
+      min-width: 500px;
+    }
+    th, td { padding: 9px 12px; border-bottom: 1px solid var(--card-border); }
+    th {
+      background: #0d101a;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.74rem;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255, 255, 255, 0.02); }
+
+    .hit {
+      color: var(--accent-green);
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .fault {
+      color: var(--accent-red);
+      font-weight: 700;
+      background: rgba(244, 63, 94, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .mem-map-strip {
+      display: flex;
+      overflow-x: auto;
+      gap: 3px;
+      margin: 12px 0;
+      padding: 8px;
+      background: #06070a;
+      border: 1px solid #1c2233;
+      border-radius: 6px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .map-block {
+      padding: 8px 10px;
+      min-width: 85px;
+      text-align: center;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      flex-shrink: 0;
+    }
+    .map-block.used { background: #161924; border: 1px solid #2d3448; color: #7f8fa4; }
+    .map-block.free { background: rgba(0, 112, 243, 0.12); border: 1px solid #0070f3; color: #38bdf8; font-weight: bold; }
+    .map-block .addr { font-size: 0.7rem; color: #f59e0b; margin-top: 2px; }
+
+    .vert-mem-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+      gap: 12px;
+      margin: 12px 0;
+    }
+    .vert-col {
+      background: #07090e;
+      border: 1px solid #232a3d;
+      border-radius: 6px;
+      padding: 10px;
+      text-align: center;
+    }
+    .vert-col-title {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+      margin-bottom: 8px;
+      border-bottom: 1px solid #1a2030;
+      padding-bottom: 4px;
+    }
+    .vert-slot {
+      border: 1px dashed #2b3347;
+      margin-bottom: 6px;
+      padding: 6px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+    }
+    .vert-slot.alloc {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--accent-green);
+      color: #4ade80;
+      font-weight: bold;
+    }
+    .vert-slot.empty { background: #0f121a; color: #64748b; }
+
+    /* MCQs Styles & Robust Quiz Mode */
+    .mcq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 12px;
+      transition: border-color 0.2s;
+    }
+    .mcq-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .mcq-q { font-size: 0.92rem; font-weight: 600; color: #fff; }
+    .mcq-num { color: var(--accent-cyan); font-weight: 700; margin-right: 6px; }
+    .mcq-opts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin: 8px 0;
+    }
+    @media (min-width: 640px) {
+      .mcq-opts { grid-template-columns: 1fr 1fr; }
+    }
+    .opt-box {
+      background: #08090e;
+      border: 1px solid #1a1e2b;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 0.82rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.15s ease;
+    }
+    .opt-box:hover { border-color: #2b3650; color: #cbd5e1; }
+    .opt-letter {
+      background: #151824;
+      color: #cbd5e1;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      transition: all 0.15s ease;
+    }
+
+    /* When Quiz Mode is OFF (Show Answers Mode) */
+    body.show-answers .opt-box.correct {
+      border-color: var(--accent-green) !important;
+      background: rgba(16, 185, 129, 0.1) !important;
+      color: #fff !important;
+      font-weight: 600;
+    }
+    body.show-answers .opt-box.correct .opt-letter {
+      background: var(--accent-green) !important;
+      color: #000 !important;
+    }
+    body.show-answers .mcq-expl { display: block !important; }
+
+    /* When Quiz Mode is ON (Default: Hide all answers) */
+    body.quiz-mode .opt-box.correct {
+      border-color: #1a1e2b;
+      background: #08090e;
+      color: #94a3b8;
+      font-weight: normal;
+    }
+    body.quiz-mode .opt-box.correct .opt-letter {
+      background: #151824;
+      color: #cbd5e1;
+    }
+    body.quiz-mode .mcq-expl { display: none; }
+
+    /* Interactive click feedback in Quiz mode */
+    .opt-box.user-correct {
+      border-color: var(--accent-green) !important;
+      background: rgba(16, 185, 129, 0.15) !important;
+      color: #4ade80 !important;
+      font-weight: bold;
+    }
+    .opt-box.user-correct .opt-letter {
+      background: var(--accent-green) !important;
+      color: #000 !important;
+    }
+    .opt-box.user-wrong {
+      border-color: var(--accent-red) !important;
+      background: rgba(244, 63, 94, 0.15) !important;
+      color: #fb7185 !important;
+    }
+    .opt-box.user-wrong .opt-letter {
+      background: var(--accent-red) !important;
+      color: #fff !important;
+    }
+
+    .mcq-expl {
+      background: #090c14;
+      border-left: 2px solid var(--accent-cyan);
+      padding: 6px 10px;
+      font-size: 0.78rem;
+      color: #8da2c0;
+      margin-top: 8px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Theory Lists */
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 16px;
+    }
+    .theory-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+    .theory-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .theory-list { list-style: none; margin-top: 6px; font-size: 0.85rem; color: #cbd5e1; }
+    .theory-list li { position: relative; padding-left: 16px; margin-bottom: 6px; }
+    .theory-list li::before {
+      content: "•";
+      color: var(--accent-blue);
+      position: absolute;
+      left: 0;
+      font-size: 1.1rem;
+      top: -2px;
+    }
+    .theory-list b { color: #fff; }
+
+    /* Shell Scripts */
+    .script-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 18px;
+    }
+    .script-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .script-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .copy-btn {
+      background: #111420;
+      border: 1px solid #272e42;
+      color: #94a3b8;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 0.74rem;
+      cursor: pointer;
+    }
+    .copy-btn:hover { color: #fff; border-color: var(--accent-cyan); }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid #181b24;
+      border-radius: 6px;
+      padding: 12px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+    .comment { color: #5a647d; }
+    .keyword { color: #f43f5e; font-weight: 600; }
+    .string { color: #10b981; }
+    .command { color: #38bdf8; }
+    .var { color: #f59e0b; }
+  </style>
+</head>
+<body class="quiz-mode">
+
+  <!-- Sticky Portal Header -->
+  <header class="app-header">
+    <div class="container">
+      <div class="header-top">
+        <div class="logo">
+          OS T2 <span>EXAM PORTAL</span>
+          <span class="badge-lju">LJU Semester VII</span>
+        </div>
+        <button class="copy-btn" id="quiz-toggle-btn" onclick="toggleQuizMode()" style="color: var(--accent-cyan); border-color: #2b3950; font-weight: 600;">
+          Mode: Quiz (Hidden)
+        </button>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('tab-ch6', this)">💾 Ch 6: Memory Numericals</button>
+        <button class="tab-btn" onclick="switchTab('tab-ch7', this)">🧠 Ch 7: Virtual Mem Numericals</button>
+        <button class="tab-btn" onclick="switchTab('tab-ch8', this)">💿 Ch 8: Disk Sched Numericals</button>
+        <button class="tab-btn" onclick="switchTab('tab-mcq', this)">📝 All 80 MCQs Bank</button>
+        <button class="tab-btn" onclick="switchTab('tab-theory', this)">📚 Complete Theory (Ch 6–10)</button>
+        <button class="tab-btn" onclick="switchTab('tab-scripts', this)">🐧 Lab Shell Scripts</button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- ======================================================== -->
+    <!-- TAB 1: CHAPTER 6 NUMERICALS                              -->
+    <!-- ======================================================== -->
+    <main id="tab-ch6" class="tab-content active">
+
+      <!-- TYPE 1: PARTITION ALLOCATION -->
+      <div class="card">
+        <div class="card-title">
+          <span>Type 1: Contiguous Partition Allocation (First, Best, Worst, Next Fit)</span>
+          <span class="badge-tag bt-u6">Unit 6</span>
+        </div>
+
+        <div class="rules-box">
+          <div class="rules-title">📌 Points to Remember &amp; Algorithm Rules</div>
+          <ul class="theory-list">
+            <li><b>First-Fit:</b> Allocate the <i>first partition</i> that is big enough ($\ge$ process size). Fastest allocation, but clutters small holes at beginning.</li>
+            <li><b>Best-Fit:</b> Allocate the <i>smallest partition</i> that is big enough. Leaves the smallest leftover hole. Most space-efficient for large upcoming jobs.</li>
+            <li><b>Worst-Fit:</b> Allocate the <i>largest available partition</i>. Leaves the largest leftover hole. Often leads to poor utilization.</li>
+            <li><b>Next-Fit:</b> Starts search from where the <i>last allocation was made</i> rather than restarting from the beginning.</li>
+          </ul>
+        </div>
+
+        <!-- Problem 1: PB Q219 / Q220 / Classroom Notes -->
+        <div class="problem-box">
+          <b>Problem 1 (PB Q219, Q220 &amp; Notes Pg 19-21):</b><br>
+          Given partitions: <code>100K, 500K, 200K, 300K, 600K</code> (in order). Place processes: <code>212K, 417K, 112K, 426K</code> (in order).
+        </div>
+        <div class="vert-mem-grid">
+          <div class="vert-col">
+            <div class="vert-col-title">First-Fit</div>
+            <div class="vert-slot empty">100K (free)</div>
+            <div class="vert-slot alloc">212K + 112K<br>(176K left)</div>
+            <div class="vert-slot empty">200K (free)</div>
+            <div class="vert-slot empty">300K (free)</div>
+            <div class="vert-slot alloc">417K<br>(183K left)</div>
+            <div style="font-size: 0.72rem; color: var(--accent-red); margin-top: 4px;">426K Must Wait</div>
+          </div>
+          <div class="vert-col" style="border-color: var(--accent-green);">
+            <div class="vert-col-title" style="color: var(--accent-green);">Best-Fit (Winner)</div>
+            <div class="vert-slot empty">100K (free)</div>
+            <div class="vert-slot alloc">417K (83K left)</div>
+            <div class="vert-slot alloc">112K (88K left)</div>
+            <div class="vert-slot alloc">212K (88K left)</div>
+            <div class="vert-slot alloc">426K (174K left)</div>
+            <div style="font-size: 0.72rem; color: var(--accent-green); margin-top: 4px;">ALL Allocated!</div>
+          </div>
+          <div class="vert-col">
+            <div class="vert-col-title">Worst-Fit</div>
+            <div class="vert-slot empty">100K (free)</div>
+            <div class="vert-slot alloc">417K (83K left)</div>
+            <div class="vert-slot empty">200K (free)</div>
+            <div class="vert-slot empty">300K (free)</div>
+            <div class="vert-slot alloc">212K + 112K<br>(276K left)</div>
+            <div style="font-size: 0.72rem; color: var(--accent-red); margin-top: 4px;">426K Must Wait</div>
+          </div>
+          <div class="vert-col">
+            <div class="vert-col-title">Next-Fit</div>
+            <div class="vert-slot empty">100K (free)</div>
+            <div class="vert-slot alloc">212K (pt at 500)</div>
+            <div class="vert-slot empty">200K (free)</div>
+            <div class="vert-slot empty">300K (free)</div>
+            <div class="vert-slot alloc">417K + 112K<br>(71K left)</div>
+            <div style="font-size: 0.72rem; color: var(--accent-red); margin-top: 4px;">426K Must Wait</div>
+          </div>
+        </div>
+
+        <!-- Problem 2: PB Q221 / Q222 -->
+        <div class="problem-box" style="margin-top: 14px;">
+          <b>Problem 2 (Practice Book Q221, Q222):</b><br>
+          Given six partitions: <code>300KB, 600KB, 350KB, 200KB, 750KB, 125KB</code> (in order).<br>
+          Place processes: <code>115KB, 500KB, 358KB, 200KB, 375KB</code>.
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Process</th><th>First-Fit Allocation</th><th>Best-Fit Allocation</th><th>Worst-Fit Allocation</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>P1 (115K)</b></td><td>In 300K (leaves 185K)</td><td>In 125K (leaves 10K)</td><td>In 750K (leaves 635K)</td></tr>
+              <tr><td><b>P2 (500K)</b></td><td>In 600K (leaves 100K)</td><td>In 600K (leaves 100K)</td><td>In 635K (leaves 135K)</td></tr>
+              <tr><td><b>P3 (358K)</b></td><td>In 750K (leaves 392K)</td><td>In 750K (leaves 392K)</td><td>In 600K (not enough) &rarr; in 350K? No! Must wait.</td></tr>
+              <tr><td><b>P4 (200K)</b></td><td>In 350K (leaves 150K)</td><td>In 200K (exact fit, 0K left)</td><td>In 350K (leaves 150K)</td></tr>
+              <tr><td><b>P5 (375K)</b></td><td>In 392K (left from 750K)</td><td>In 392K (left from 750K)</td><td><span class="fault">Fails (Must Wait)</span></td></tr>
+              <tr><td><b>Status</b></td><td><span class="hit">ALL Allocated</span></td><td><span class="hit">ALL Allocated (Most Efficient)</span></td><td><span class="fault">Fails on P3/P5</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TYPE 2: DYNAMIC PARTITIONING WITH STARTING ADDRESS -->
+      <div class="card">
+        <div class="card-title">
+          <span>Type 2: Dynamic Partitioning with Starting Addresses</span>
+          <span class="badge-tag bt-u6">Notes Ex 3 &amp; 4</span>
+        </div>
+
+        <div class="rules-box">
+          <div class="rules-title">📌 Points to Remember</div>
+          <ul class="theory-list">
+            <li><b>Base Starting Address:</b> Computed by adding all preceding block sizes starting from address $0$.</li>
+            <li>When placing a process of size $S$ into a hole starting at address $A$, the allocated process starts at $A$, and the remaining hole starts at $A + S$.</li>
+          </ul>
+        </div>
+
+        <div class="problem-box">
+          <b>Problem Statement:</b> Memory has alternating used (shaded) and free (white) blocks:<br>
+          <code>[Used 20M: 0-20] [Free 20M: 20-40] [Used 40M: 40-80] [Free 60M: 80-140] [Used 20M+10M: 140-170] [Free 60M: 170-230] [Used 40M: 230-270] [Free 20M: 270-290] [Used 30M: 290-320] [Free 40M: 320-360] [Used 40M: 360-400]</code><br>
+          Requests arrive: <b>40M, 20M, 10M</b>. Determine starting addresses for each algorithm.
+        </div>
+
+        <div class="mem-map-strip">
+          <div class="map-block used">0-20M<br>Used</div>
+          <div class="map-block free">20-40M<br>Hole 1 (20M)<div class="addr">Addr: 20M</div></div>
+          <div class="map-block used">40-80M<br>Used</div>
+          <div class="map-block free">80-140M<br>Hole 2 (60M)<div class="addr">Addr: 80M</div></div>
+          <div class="map-block used">140-170M<br>Used</div>
+          <div class="map-block free">170-230M<br>Hole 3 (60M)<div class="addr">Addr: 170M</div></div>
+          <div class="map-block used">230-270M<br>Used</div>
+          <div class="map-block free">270-290M<br>Hole 4 (20M)<div class="addr">Addr: 270M</div></div>
+          <div class="map-block used">290-320M<br>Used</div>
+          <div class="map-block free">320-360M<br>Hole 5 (40M)<div class="addr">Addr: 320M</div></div>
+          <div class="map-block used">360-400M<br>Used</div>
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Algorithm</th><th>Req 1 (40M) Starting Addr</th><th>Req 2 (20M) Starting Addr</th><th>Req 3 (10M) Starting Addr</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>First-Fit</b></td><td><b>80M</b> (in Hole 2: leaves 20M at 120M)</td><td><b>20M</b> (in Hole 1: exact fit)</td><td><b>120M</b> (in Hole 2 remainder)</td></tr>
+              <tr><td><b>Best-Fit</b></td><td><b>320M</b> (in Hole 5: exact fit)</td><td><b>20M</b> (in Hole 1: exact fit)</td><td><b>270M</b> (in Hole 4: leaves 10M at 280M)</td></tr>
+              <tr><td><b>Worst-Fit</b></td><td><b>80M</b> (in Hole 2)</td><td><b>170M</b> (in Hole 3)</td><td><b>190M</b> or <b>320M</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TYPE 3: PAGING WITH TLB & EMAT -->
+      <div class="card">
+        <div class="card-title">
+          <span>Type 3: Paging with TLB &amp; Effective Memory Access Time (EMAT)</span>
+          <span class="badge-tag bt-u6">PB Q223, Q224, Q227</span>
+        </div>
+
+        <div class="rules-box">
+          <div class="rules-title">📌 Formulas &amp; Points to Remember</div>
+          <div class="formula-card">
+            Hit Ratio = α, Miss Ratio = (1 - α)<br>
+            • Without TLB Search Time: EMAT = [ α × t_mem ] + [ (1 - α) × (t_page_table + t_mem) ]<br>
+            • With TLB Search Time (t_tlb): EMAT = [ α × (t_tlb + t_mem) ] + [ (1 - α) × (t_tlb + t_page_table + t_mem) ]
+          </div>
+          <p style="font-size: 0.8rem; color: #cbd5e1; margin-top: 4px;">
+            <b>Why?</b> On a TLB hit, data is accessed directly in 1 memory cycle. On a TLB miss, CPU must first read the page table in memory, and then read the actual data (2 memory accesses).
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+          <!-- Q223 -->
+          <div style="background: #08090f; border: 1px solid var(--card-border); padding: 12px; border-radius: 6px;">
+            <b style="color: #fff; font-size: 0.88rem;">PB Q223: Without TLB Search Overhead</b>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 4px 0;">Hit ratio = 75%, Memory = 100ns, Page Table = 100ns.</p>
+            <div style="font-size: 0.82rem; line-height: 1.5;">
+              • Hit (75%): 100 ns<br>
+              • Miss (25%): 100 + 100 = 200 ns<br>
+              <code>EMAT = 0.75 × 100 + 0.25 × 200 = 75 + 50 = <b style="color: var(--accent-cyan);">125 ns</b></code>
+            </div>
+          </div>
+          <!-- Q224 -->
+          <div style="background: #08090f; border: 1px solid var(--card-border); padding: 12px; border-radius: 6px;">
+            <b style="color: #fff; font-size: 0.88rem;">PB Q224: Asymmetrical Timing</b>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 4px 0;">Hit ratio = 85%, Memory = 100ns, Page Table = 50ns.</p>
+            <div style="font-size: 0.82rem; line-height: 1.5;">
+              • Hit (85%): 100 ns<br>
+              • Miss (15%): 50 + 100 = 150 ns<br>
+              <code>EMAT = 0.85 × 100 + 0.15 × 150 = 85 + 22.5 = <b style="color: var(--accent-cyan);">107.5 ns</b></code>
+            </div>
+          </div>
+          <!-- Q227 -->
+          <div style="background: #08090f; border: 1px solid var(--card-border); padding: 12px; border-radius: 6px;">
+            <b style="color: #fff; font-size: 0.88rem;">PB Q227: With 20ns TLB Lookup Time</b>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin: 4px 0;">Hit ratio = 75%, Memory = 100ns, Page Table = 100ns, TLB = 20ns.</p>
+            <div style="font-size: 0.82rem; line-height: 1.5;">
+              • Hit (75%): 20 + 100 = 120 ns<br>
+              • Miss (25%): 20 + 100 + 100 = 220 ns<br>
+              <code>EMAT = 0.75 × 120 + 0.25 × 220 = 90 + 55 = <b style="color: var(--accent-cyan);">145 ns</b></code>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TYPE 4: PAGING ADDRESS TRANSLATION -->
+      <div class="card">
+        <div class="card-title">
+          <span>Type 4: Logical Address to Physical Address Translation</span>
+          <span class="badge-tag bt-u6">PB Q239</span>
+        </div>
+        <div class="rules-box">
+          <div class="rules-title">📌 Formula &amp; Steps</div>
+          <div class="formula-card">
+            Page Number (p) = Logical Address / Page Size<br>
+            Page Offset (d) = Logical Address % Page Size<br>
+            Physical Address = (Frame Number f × Page Size) + Offset d
+          </div>
+        </div>
+        <div class="problem-box">
+          <b>Solved Example:</b> Given Logical Address = <b>5000</b>, Page Size = <b>1024 bytes (1 KB)</b>. Page Table maps Page 4 &rarr; Frame 7.<br>
+          • $p = 5000 / 1024 = 4$<br>
+          • $d = 5000 \pmod{1024} = 904$<br>
+          • Physical Address = $(7 \times 1024) + 904 = 7168 + 904 = \mathbf{8072}$.
+        </div>
+      </div>
+
+    </main>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 2: CHAPTER 7 NUMERICALS                              -->
+    <!-- ======================================================== -->
+    <main id="tab-ch7" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>Chapter 7: Virtual Memory &amp; Page Replacement Numericals</span>
+          <span class="badge-tag bt-u7">Unit 7</span>
+        </div>
+
+        <div class="rules-box">
+          <div class="rules-title">📌 Points to Remember &amp; Algorithm Shortcuts</div>
+          <ul class="theory-list">
+            <li><b>FIFO:</b> Replace the <i>oldest loaded</i> page in the frame. Susceptible to <b>Belady's Anomaly</b> (page faults can increase with more frames).</li>
+            <li><b>LRU:</b> Look <i>backwards</i> in the reference history; replace the page that was referenced least recently. (Optimal practical approximation).</li>
+            <li><b>Optimal (OPT):</b> Look <i>forward</i> into the future; replace the page that will not be referenced for the longest duration. (Theoretical minimum faults).</li>
+            <li><b>NRU (Not Recently Used):</b> Uses Reference bit ($R$) and Modified bit ($M$). Four classes:
+              Class 0 $(R=0, M=0)$, Class 1 $(R=0, M=1)$, Class 2 $(R=1, M=0)$, Class 3 $(R=1, M=1)$. Replaces from the lowest non-empty class.
+            </li>
+            <li><b>Second Chance:</b> Inspects FIFO with bit $R$. If $R=1$, clear to $0$ and give second chance; if $R=0$, evict.</li>
+          </ul>
+        </div>
+
+        <!-- Problem 1: PB Q273 (Master 20-Page Comparison) -->
+        <div class="problem-box">
+          <b>Problem 1 (PB Q273 Master Problem):</b> Reference String: <code>7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1</code> with <b>3 frames</b>.
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Algorithm</th><th>Replacement Decision Strategy</th><th>Total Page Faults</th><th>Hits</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>Optimal (OPT)</b></td><td>Replaces page needed furthest in future</td><td><span class="hit">9 Faults</span></td><td>11 Hits</td></tr>
+              <tr><td><b>LRU</b></td><td>Replaces page not accessed for longest time in past</td><td><span class="hit">12 Faults</span></td><td>8 Hits</td></tr>
+              <tr><td><b>FIFO</b></td><td>Replaces oldest loaded page cyclically</td><td><span class="fault">15 Faults</span></td><td>5 Hits</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Problem 2: PB Q274 / Notes Pg 76-77 -->
+        <div class="problem-box" style="margin-top: 14px;">
+          <b>Problem 2 (PB Q274 &amp; Notes Pg 76-77):</b> String: <code>0, 1, 7, 2, 3, 2, 7, 1, 0, 3</code> with <b>4 frames</b>.
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Algorithm</th><th>Frame History Trace</th><th>Total Faults</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>FIFO</b></td><td>Loads 0,1,7,2 (4 faults) &rarr; 3 replaces 0 &rarr; 2,7,1 (hits) &rarr; 0 replaces 1 &rarr; 3 (hit)</td><td><b style="color: var(--accent-cyan);">6 Faults</b></td></tr>
+              <tr><td><b>LRU</b></td><td>Loads 0,1,7,2 (4 faults) &rarr; 3 replaces 0 &rarr; 2,7,1 (hits) &rarr; 0 replaces 3 &rarr; 3 replaces 2</td><td><b style="color: var(--accent-amber);">7 Faults</b></td></tr>
+              <tr><td><b>Optimal</b></td><td>Loads 0,1,7,2 (4 faults) &rarr; 3 replaces 0 &rarr; 2,7,1 (hits) &rarr; 0 replaces 1 &rarr; 3 (hit)</td><td><b style="color: var(--accent-green);">6 Faults</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Problem 3: Table based NRU vs FIFO vs LRU (Notes Pg 79) -->
+        <div class="problem-box" style="margin-top: 14px;">
+          <b>Problem 3 (Classroom Notes Pg 79 Table Question):</b> Which page will FIFO, LRU, and NRU replace?
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Page</th><th>Loaded Time</th><th>Last Ref Time</th><th>R</th><th>M</th><th>NRU Class</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>0</b></td><td>126</td><td>280</td><td>1</td><td>0</td><td><b>Class 2</b> (Ref, Not Mod)</td></tr>
+              <tr><td><b>1</b></td><td>230</td><td>265</td><td>0</td><td>1</td><td><b>Class 1</b> (Not Ref, Mod)</td></tr>
+              <tr><td><b>2</b></td><td>140</td><td>270</td><td>0</td><td>0</td><td><b>Class 0</b> (Not Ref, Not Mod)</td></tr>
+              <tr><td><b>3</b></td><td>110</td><td>285</td><td>1</td><td>1</td><td><b>Class 3</b> (Ref, Mod)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="font-size: 0.84rem; color: #cbd5e1; margin-bottom: 12px;">
+          • <b>FIFO:</b> Smallest Loaded Time (110) &rarr; <b style="color: var(--accent-cyan);">Page 3</b>.<br>
+          • <b>LRU:</b> Smallest Last Ref Time (265) &rarr; <b style="color: var(--accent-cyan);">Page 1</b>.<br>
+          • <b>NRU:</b> Lowest non-empty class (Class 0: R=0, M=0) &rarr; <b style="color: var(--accent-cyan);">Page 2</b>.
+        </div>
+
+        <!-- Problem 4: Belady's Anomaly (PB Q277) -->
+        <div class="problem-box">
+          <b>Problem 4: Proof of Belady's Anomaly (PB Q277):</b> String <code>5, 4, 3, 2, 5, 4, 6, 5, 4, 3, 2, 6</code> with FIFO.<br>
+          • With <b>3 frames:</b> Page Faults = <b>9</b><br>
+          • With <b>4 frames:</b> Page Faults = <b>10</b> (Faults increase when frames increase &rarr; Proves Belady's Anomaly in FIFO!).
+        </div>
+
+        <!-- Problem 5: Second Chance / Clock Page Replacement (Notes Pg 80) -->
+        <div class="problem-box">
+          <b>Problem 5 (Notes Pg 80 - Second Chance / Clock Algorithm):</b><br>
+          Reference String: <code>2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2</code> with <b>3 frames</b> (initially empty).<br>
+          • <b>Step-by-step trace:</b><br>
+          1. <code>2</code> &rarr; Fault [Frame: 2 (R=1)]<br>
+          2. <code>3</code> &rarr; Fault [Frame: 2 (R=1), 3 (R=1)]<br>
+          3. <code>2</code> &rarr; <span class="hit">Hit</span> [Frame: 2 (R=1), 3 (R=1)]<br>
+          4. <code>1</code> &rarr; Fault [Frame: 2 (R=1), 3 (R=1), 1 (R=1)] (Pointer at Frame 0)<br>
+          5. <code>5</code> &rarr; Fault &rarr; Pointer checks 2 (R=1&rarr;0), 3 (R=1&rarr;0), 1 (R=1&rarr;0), circles back to 2 (R=0) &rarr; Replaces 2 with <b>5</b> [Frame: 5 (R=1), 3 (0), 1 (0)], Pointer at Frame 1.<br>
+          6. <code>2</code> &rarr; Fault &rarr; Pointer checks 3 (R=0) &rarr; Replaces 3 with <b>2</b> [Frame: 5 (1), 2 (1), 1 (0)], Pointer at Frame 2.<br>
+          7. <code>4</code> &rarr; Fault &rarr; Pointer checks 1 (R=0) &rarr; Replaces 1 with <b>4</b> [Frame: 5 (1), 2 (1), 4 (1)], Pointer at Frame 0.<br>
+          8. <code>5</code> &rarr; <span class="hit">Hit</span> [Frame: 5 (R=1), 2 (1), 4 (1)]<br>
+          9. <code>3</code> &rarr; Fault &rarr; Pointer clears 5 (R=0), 2 (R=0), 4 (R=0), replaces 5 with <b>3</b> [Frame: 3 (1), 2 (0), 4 (0)], Pointer at Frame 1.<br>
+          10. <code>2</code> &rarr; <span class="hit">Hit</span> (Sets R=1) [Frame: 3 (1), 2 (1), 4 (0)]<br>
+          11. <code>5</code> &rarr; Fault &rarr; Pointer checks 2 (R=1&rarr;0), checks 4 (R=0) &rarr; Replaces 4 with <b>5</b> [Frame: 3 (1), 2 (0), 5 (1)], Pointer at Frame 0.<br>
+          12. <code>2</code> &rarr; <span class="hit">Hit</span> (Sets R=1) [Frame: 3 (1), 2 (1), 5 (1)]<br>
+          • <b>Total Page Faults = 7</b> | <b>Total Page Hits = 5</b>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 3: CHAPTER 8 DISK SCHEDULING NUMERICALS              -->
+    <!-- ======================================================== -->
+    <main id="tab-ch8" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>Chapter 8: Disk Scheduling All 6 Algorithms &amp; Seek Time</span>
+          <span class="badge-tag bt-u8">Unit 8</span>
+        </div>
+
+        <div class="rules-box">
+          <div class="rules-title">📌 Points to Remember &amp; Formulas</div>
+          <div class="formula-card">
+            Total Head Movement (THM) = Sum of absolute cylinder differences: Σ |Current - Next|<br>
+            Total Seek Time = THM × (Seek Time per cylinder)<br>
+            Rotational Latency = 1 / (2 × RPM) × 60 seconds
+          </div>
+          <ul class="theory-list" style="margin-top: 6px;">
+            <li><b>FCFS:</b> Services in arrival queue order.</li>
+            <li><b>SSTF:</b> Greedily selects the closest pending cylinder. Minimum seek time, but risk of starvation for distant requests.</li>
+            <li><b>SCAN:</b> Moves towards one extreme (touches <b>track 0 or Max track</b>), then reverses.</li>
+            <li><b>LOOK:</b> Moves towards one extreme only up to the <b>last pending request</b> (does NOT travel to boundary 0 or Max).</li>
+            <li><b>C-SCAN:</b> Moves to boundary, jumps to opposite boundary without servicing, continues in same direction.</li>
+            <li><b>C-LOOK:</b> Moves to last request in direction, jumps to lowest request without servicing, continues.</li>
+          </ul>
+        </div>
+
+        <!-- Problem 1: 5000-Cylinder Problem from Notes -->
+        <div class="problem-box">
+          <b>Problem 1 (Classroom Notes Pg 16-19 &amp; PB Q305): 5000 Cylinders (0 to 4999)</b><br>
+          Head currently at <b>143</b> (moving towards 0 first in notes).<br>
+          Queue: <code>86, 1470, 913, 1774, 948, 1509, 1022, 1750, 130</code>.
+        </div>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Algorithm</th><th>Service Sequence / Path</th><th>Calculation Breakdown</th><th>Total Movement (THM)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>FCFS</b></td><td>143 &rarr; 86 &rarr; 1470 &rarr; 913 &rarr; 1774 &rarr; 948 &rarr; 1509 &rarr; 1022 &rarr; 1750 &rarr; 130</td><td>57+1384+557+861+826+561+487+728+1620</td><td><b>7081 Cylinders</b></td></tr>
+              <tr><td><b>SSTF</b></td><td>143 &rarr; 130 &rarr; 86 &rarr; 913 &rarr; 948 &rarr; 1022 &rarr; 1470 &rarr; 1509 &rarr; 1750 &rarr; 1774</td><td>13+44+827+35+74+448+39+241+24</td><td><b style="color: var(--accent-green);">1745 Cylinders (Optimal)</b></td></tr>
+              <tr><td><b>SCAN</b></td><td>143 &rarr; 130 &rarr; 86 &rarr; <b>0 (boundary)</b> &rarr; 913 &rarr; ... &rarr; 1774</td><td>(143 - 0) + (1774 - 0) = 143 + 1774</td><td><b>1917 Cylinders</b></td></tr>
+              <tr><td><b>C-SCAN</b></td><td>143 &rarr; 130 &rarr; 86 &rarr; <b>0</b> &rarr; [Jump to <b>4999</b>] &rarr; 1774 &rarr; ... &rarr; 913</td><td>143 + 4999 + (4999 - 913)</td><td><b>9228 Cylinders</b></td></tr>
+              <tr><td><b>LOOK</b></td><td>143 &rarr; 130 &rarr; <b>86 (last req)</b> &rarr; 913 &rarr; ... &rarr; 1774</td><td>(143 - 86) + (1774 - 86) = 57 + 1688</td><td><b>1745 Cylinders</b></td></tr>
+              <tr><td><b>C-LOOK</b></td><td>143 &rarr; 130 &rarr; <b>86</b> &rarr; [Jump to <b>1774</b>] &rarr; 1750 &rarr; ... &rarr; 913</td><td>13 + 44 + 1688 + (1774 - 913)</td><td><b>2606 Cylinders</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Problem 2: 200-Cylinder Problem from PB Q303 -->
+        <div class="problem-box" style="margin-top: 16px;">
+          <b>Problem 2 (PB Q303): 200 Cylinders (0 to 199)</b><br>
+          Head currently at <b>53</b>, moving in increasing direction. Queue: <code>98, 183, 37, 122, 14, 124, 65, 67</code>.
+        </div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr><th>Algorithm</th><th>Shortest Formula</th><th>THM</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>FCFS</b></td><td>Strict queue order addition</td><td><b>640 Cylinders</b></td></tr>
+              <tr><td><b>SSTF</b></td><td>(67 - 53) + (67 - 14) + (183 - 14)</td><td><b>236 Cylinders</b></td></tr>
+              <tr><td><b>SCAN</b></td><td>(199 - 53) + (199 - 14) = 146 + 185</td><td><b>331 Cylinders</b></td></tr>
+              <tr><td><b>LOOK</b></td><td>(183 - 53) + (183 - 14) = 130 + 169</td><td><b>299 Cylinders</b></td></tr>
+              <tr><td><b>C-SCAN</b></td><td>(199 - 53) + (199 - 0) + (37 - 0)</td><td><b>382 Cylinders</b></td></tr>
+              <tr><td><b>C-LOOK</b></td><td>(183 - 53) + (183 - 14) + (37 - 14)</td><td><b>322 Cylinders</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Problem 3: Seek Time Calculation (PB Q302) -->
+        <div class="problem-box" style="margin-top: 14px;">
+          <b>Problem 3: Seek Time Conversion (PB Q302):</b><br>
+          Given seek time = <b>5 ms per cylinder move</b>. If SSTF THM = 236 cylinders:<br>
+          <code>Total Seek Time = 236 × 5 ms = 1180 ms = 1.18 seconds.</code>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 4: ALL 80 MCQS FROM PRACTICE BOOK (QUIZ & REVEAL)    -->
+    <!-- ======================================================== -->
+    <main id="tab-mcq" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>All Practice Book MCQs (Every Single Question Included)</span>
+          <span class="badge-tag bt-u10">80 MCQs Total · 25 Marks</span>
+        </div>
+
+        <div style="background: #090c14; border: 1px solid #1f273b; padding: 10px 14px; border-radius: 6px; margin-bottom: 14px; font-size: 0.82rem; color: #cbd5e1;">
+          💡 <b>Interactive Blind Quiz Mode:</b> Answers, green letters, and green backgrounds are 100% hidden. Tap any option to test yourself: correct answers turn green, wrong answers turn red! Use the button in the top-right to toggle all answers.
+        </div>
+
+        <div class="tab-bar" style="margin-bottom: 14px;">
+          <button class="tab-btn active" onclick="filterMCQ('all', this)">All (80)</button>
+          <button class="tab-btn" onclick="filterMCQ('u6', this)">Unit 6 (21)</button>
+          <button class="tab-btn" onclick="filterMCQ('u7', this)">Unit 7 (21)</button>
+          <button class="tab-btn" onclick="filterMCQ('u8', this)">Unit 8 (8)</button>
+          <button class="tab-btn" onclick="filterMCQ('u9', this)">Unit 9 (15)</button>
+          <button class="tab-btn" onclick="filterMCQ('u10', this)">Unit 10 (15)</button>
+        </div>
+
+        <div id="mcq-list">
+          <!-- UNIT 6 MCQS (Q194 - Q203, Q207 - Q212, Q229 - Q233) = 21 MCQs -->
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q194</span>In memory management, Base register holds the _________ Address.</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Smallest</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Largest</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Average</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>None of the mentioned</div></div><div class="mcq-expl">💡 Base register holds the smallest legal physical address.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q195</span>The limit register specifies the_________.</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Smallest Address</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Largest Address</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Size of the Range Process</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Process</div></div><div class="mcq-expl">💡 Limit register specifies the size (range) of the process.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q196</span>The way of binding of instruction and data to main memory address is/are:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Compile time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Load time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Execution time</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>All of the above</div></div><div class="mcq-expl">💡 Binding can happen at compile, load, or execution time.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q197</span>An address generated by CPU is known as _______ Address.</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Physical</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Logical</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Scientific</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Specific</div></div><div class="mcq-expl">💡 CPU generates logical/virtual addresses.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q198</span>Logical address is also called ____________ Address.</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Physical</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Scientific</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Virtual</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Specific</div></div><div class="mcq-expl">💡 Logical address = Virtual address.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q199</span>An address loaded into the memory address register (MAR) is commonly referred to as:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Physical</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Scientific</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Virtual</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Specific</div></div><div class="mcq-expl">💡 Hardware RAM uses physical addresses.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q200</span>The event of copying process from main memory to hard disk is known as:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Roll in</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Roll out</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Rolling</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Roll back</div></div><div class="mcq-expl">💡 RAM to disk = Roll out (Swap out).</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q201</span>The event of copying process from hard disk to main memory is known as:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Roll in</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Roll out</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Rolling</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Roll back</div></div><div class="mcq-expl">💡 Disk to RAM = Roll in (Swap in).</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q202</span>The set of all logical addresses generated by a program is:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Physical Address Space</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Logical Address Space</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Scientific Address Space</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Specific Address Space</div></div><div class="mcq-expl">💡 All logical addresses form the Logical Address Space.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q203</span>In an OS, ____________ is a device or location that stores data not currently in main memory.</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>physical store</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>space store</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>address store</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>backing store</div></div><div class="mcq-expl">💡 Backing store (hard disk) holds swapped out processes.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q207</span>In memory management allocation algorithm used is/are:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>First Fit</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Best Fit</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Worst Fit</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>All of the mentioned</div></div><div class="mcq-expl">💡 First, Best, and Worst fit are standard contiguous algorithms.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q208</span>Which factor is considered the most in management of memory:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Efficient use of memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Speedy allocation</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Speedy deallocation</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>All of the mentioned</div></div><div class="mcq-expl">💡 Memory manager optimizes all three metrics.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q209</span>_______________ a chunk of physical memory that is the same size as a system page.</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>frame</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Pages</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Mode</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Space</div></div><div class="mcq-expl">💡 Physical memory block = Frame.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q210</span>Virtual memory divided into small fixed size chunks of same size is known as:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>frame</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Pages</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Mode</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Space</div></div><div class="mcq-expl">💡 Virtual/Logical memory blocks = Pages.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q211</span>The number used as an index into a page table is:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Index number</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Page number</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Page Offset</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Frame Offset</div></div><div class="mcq-expl">💡 Page table is indexed by Page number p.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q212</span>To define physical memory address, frame number is combined with:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Index number</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Page number</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Page Offset</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Frame Offset</div></div><div class="mcq-expl">💡 Physical Address = Frame number + Offset.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q229</span>Logical memory is broken into blocks of the same size called:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>frames</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Backing Store</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Pages</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>None of these</div></div><div class="mcq-expl">💡 Logical blocks = Pages.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q230</span>Scheme permitting physical address space of a process to be non-contiguous:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Framing</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Modelling</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Paging</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Allocating</div></div><div class="mcq-expl">💡 Paging permits non-contiguous physical allocation.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q231</span>To define physical memory address, frame number is combined with:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Index number</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Page number</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Page Offset</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Frame Offset</div></div><div class="mcq-expl">💡 Physical address = Frame + Offset.</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q232</span>Each entry in TLB consists of:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>a key</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>a value</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Both A and B</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>None of these</div></div><div class="mcq-expl">💡 Tag (Key) and Frame (Value).</div></div>
+          <div class="mcq-item" data-unit="u6"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q233</span>Memory administration approach that divides memory into multiple-sized segments:</div><span class="badge-tag bt-u6">Unit 6</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Segmentation</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Paging</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Frame</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Offset</div></div><div class="mcq-expl">💡 Segmentation uses variable-sized segments.</div></div>
+
+          <!-- UNIT 7 MCQS (Q240 - Q251, Q257 - Q265) = 21 MCQs -->
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q240</span>What is the primary purpose of virtual memory?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Increase physical memory</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Allow larger programs to run on limited physical memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Speed up memory access</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Reduce the size of applications</div></div><div class="mcq-expl">💡 Decouples logical address space from physical RAM size.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q241</span>Which of the following is a benefit of using virtual memory?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Elimination of paging</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Increased security</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Simplified memory management</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Faster disk operations</div></div><div class="mcq-expl">💡 Enhances security through address isolation and memory protection.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q242</span>In a paged memory system, what is a page?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>A fixed-size block of memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>A variable-size block</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>A section of a process</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>A CPU register</div></div><div class="mcq-expl">💡 Fixed-size logical memory block.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q243</span>Which statement is correct regarding virtual memory?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>It allows processes to exceed physical memory limits</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Eliminates physical RAM</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Requires all data in RAM</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Only in multiprogramming</div></div><div class="mcq-expl">💡 Allows logical address space to exceed physical RAM limits.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q244</span>Concept where process is copied to RAM on requirement:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Paging</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Demand paging</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Segmentation</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Swapping</div></div><div class="mcq-expl">💡 Pages loaded on demand when accessed.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q245</span>Accessing a mapped page not loaded in physical memory causes:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>segmentation fault</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>fatal error</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>page fault occurs</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>no error</div></div><div class="mcq-expl">💡 Page fault trap brings page from disk.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q246</span>Virtual memory is:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>An extremely large main memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Large secondary memory</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>An illusion of extremely large main memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Supercomputer RAM</div></div><div class="mcq-expl">💡 An illusion of continuous, vast memory.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q247</span>High-speed cache holding recently referenced page table entries:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Translation Lookaside Buffer (TLB)</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Inverse page table</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Segmented table</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>All</div></div><div class="mcq-expl">💡 TLB speeds up virtual-to-physical address translation.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q248</span>In a virtual memory environment:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Stored in cache without overhead</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Slows system considerably</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Segmentation and page tables are stored in the RAM</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>None</div></div><div class="mcq-expl">💡 Page tables reside in physical RAM.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q249</span>Demand paged memory allocation:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Allows virtual address space to be independent of physical memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Multiple of RAM size</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Detects deadlock</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Only Windows NT</div></div><div class="mcq-expl">💡 Virtual address space operates independently of physical RAM.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q250</span>Dirty bit is used to show:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Corrupted data</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Wrong page</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Page modified after being loaded in cache/memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Less accessed</div></div><div class="mcq-expl">💡 Modified page must be rewritten to disk before eviction.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q251</span>If hardware does not support _________, multi-user &amp; multi-processing OS cannot be implemented:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Two modes of CPU execution</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Demand paging</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>DMA for disk transfer</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Address translation</div></div><div class="mcq-expl">💡 Practice book answer key: Demand paging.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q257</span>What does the term 'page fault' refer to?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Accessing a page that is not in memory</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Algorithm failure</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>System crash</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Successful load</div></div><div class="mcq-expl">💡 Trap triggered when page is missing from RAM.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q258</span>What does thrashing refer to in virtual memory?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Inefficient disk usage</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Excessive page faults leading to constant swapping</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Increasing RAM</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Memory optimization</div></div><div class="mcq-expl">💡 System spends more time swapping than executing code.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q259</span>Effective access time is directly proportional to:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>page-fault rate</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>hit ratio</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>memory access time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>none</div></div><div class="mcq-expl">💡 Higher page fault rate leads to severe performance degradation.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q260</span>In FIFO page replacement, when a page must be replaced:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>oldest page is chosen</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>newest page</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>random page</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>none</div></div><div class="mcq-expl">💡 Replaces page loaded earliest into memory.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q261</span>Which algorithm chooses page not used for longest period of time?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>FIFO</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Reference bit</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>least recently used algorithm (LRU)</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Counting</div></div><div class="mcq-expl">💡 LRU looks back at previous references.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q262</span>A process is thrashing if:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>it is spending more time paging than executing</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>spending less time paging</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>page fault occurs</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>swapping cannot take place</div></div><div class="mcq-expl">💡 CPU underutilization due to continuous swapping.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q263</span>Working set model for page replacement is based on:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>modularity</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>locality (Locality of Reference)</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>globalization</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>random access</div></div><div class="mcq-expl">💡 Programs execute in localized page clusters.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q264</span>In FIFO: 1: Page fault rate can increase if frames increase. 2: Some programs do not exhibit locality:</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>1 false, 2 true</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>both false</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>both true but 2 is not reason for 1</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>both true and 2 is reason for 1</div></div><div class="mcq-expl">💡 Belady's anomaly occurs because FIFO is not a stack algorithm.</div></div>
+          <div class="mcq-item" data-unit="u7"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q265</span>What is the impact of thrashing?</div><span class="badge-tag bt-u7">Unit 7</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Improves performance</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Excessive I/O</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>It decreases the degree of multiprogramming</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Reduces I/O</div></div><div class="mcq-expl">💡 Practice book key: OS reduces degree of multiprogramming.</div></div>
+
+          <!-- UNIT 8 MCQS (Q282 - Q289) = 8 MCQs -->
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q282</span>The ______ keeps state information about the use of I/O components.</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>CPU</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>OS</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Kernel</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Shell</div></div><div class="mcq-expl">💡 Kernel maintains I/O state tables and device status.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q283</span>When hardware is accessed by reading/writing specific memory locations, it is called:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>port-mapped I/O</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>controller-mapped</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>bus-mapped</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>memory-mapped I/O</div></div><div class="mcq-expl">💡 Registers are mapped directly into system memory space.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q284</span>The heads of magnetic disk are attached to a ______ that moves all heads as a unit:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>spindle</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>track</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>disk arm</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>pin</div></div><div class="mcq-expl">💡 Heads are fixed on a common disk arm assembly.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q285</span>The ______ consists of initial startup time and time taken to traverse crossed tracks:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>access time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>rotational delay</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>seek time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Transfer time</div></div><div class="mcq-expl">💡 Moving the arm to the track = Seek time.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q286</span>On a movable head system, the time it takes to position head at the track is:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>seek time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>rotational delay</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>access time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Transfer time</div></div><div class="mcq-expl">💡 Arm movement = Seek Time.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q287</span>Time disk controller takes for beginning of sector to reach head:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>seek time</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>rotational delay</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>access time</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Transfer time</div></div><div class="mcq-expl">💡 Rotating sector under head = Rotational delay.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q288</span>The set of tracks that are at one arm position make up a:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>magnetic disks</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>cylinders</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>assemblies</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>electrical disks</div></div><div class="mcq-expl">💡 Tracks vertically aligned form a Cylinder.</div></div>
+          <div class="mcq-item" data-unit="u8"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q289</span>In ______ policy, arm returns to opposite end after last track and scan begins again:</div><span class="badge-tag bt-u8">Unit 8</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>LIFO</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>SSTF</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>SCAN</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>Circular SCAN (C-SCAN)</div></div><div class="mcq-expl">💡 C-SCAN treats cylinders as circular tracks.</div></div>
+
+          <!-- UNIT 9 MCQS (Q307 - Q321) = 15 MCQs -->
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q307</span>Which of the following is a strong password?</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>P@ssw0rd</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>!augustdelhi</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>19thAugust88</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Delhi88</div></div><div class="mcq-expl">💡 Mixes uppercase, lowercase, numbers, and symbols.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q308</span>______ in an OS refers to mechanisms implemented to ensure security and integrity:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>System protection</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Access control</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Encryption</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Firewall</div></div><div class="mcq-expl">💡 Internal access control = Protection.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q309</span>Software program that monitors incoming and outgoing network traffic:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Antivirus</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Firewall</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>System protection</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>System updates</div></div><div class="mcq-expl">💡 Firewall filters network packets.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q310</span>______ is used to protect the system from malware and malicious software:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Antivirus software</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Firewall</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Protection</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Updates</div></div><div class="mcq-expl">💡 Antivirus detects and removes malicious files.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q311</span>______ keeps the OS up to date with the latest security patches:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>System updates</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Antivirus</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Firewall</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Protection</div></div><div class="mcq-expl">💡 System updates patch vulnerabilities.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q312</span>______ gives access only to authorized users and tackles external threats:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Security</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Protection</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Updates</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Antivirus</div></div><div class="mcq-expl">💡 External threats = Security.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q313</span>______ deals with who has access to system resources and tackles internal threats:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Protection</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Updates</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Antivirus</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Security</div></div><div class="mcq-expl">💡 Internal access control = Protection.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q314</span>Malware downloading by impersonating trustworthy software to steal login info:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Worm</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Virus</div></div><div class="mcq-expl">💡 Disguised as legitimate software = Trojan Horse.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q315</span>Malware whose main purpose is self-replicating and infecting other computers:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Worm</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Virus</div></div><div class="mcq-expl">💡 Standalone self-replicating program = Worm.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q316</span>______ has ability to produce duplicate copies that occupy all resources:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Worm</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Virus</div></div><div class="mcq-expl">💡 Worm exhausts system resources.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q317</span>Aims to shut down a computer system/network so intended users cannot access:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Worm</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>Denial of Service</div></div><div class="mcq-expl">💡 Denial of Service (DoS) attacks overwhelm availability.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q318</span>Which mechanism is implemented in protection to control access to system resources?</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Encryption</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Certification</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Authorization</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>none</div></div><div class="mcq-expl">💡 Authorization grants specific access permissions.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q319</span>Netbus, Subseven, Y3K Remote Administration Tool are types of:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Worm</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Denial of Service</div></div><div class="mcq-expl">💡 Famous RATs are Trojan Horses.</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q320</span>Robert Morris is an example of:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Internet Worm</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Virus</div></div><div class="mcq-expl">💡 First famous self-replicating Internet worm (1988).</div></div>
+          <div class="mcq-item" data-unit="u9"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q321</span>Back Orifice, Beast, Zeus, The Blackhole Exploit Kit are example of:</div><span class="badge-tag bt-u9">Unit 9</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Worm</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Trojan Horse</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Trap door</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Denial of Service</div></div><div class="mcq-expl">💡 RAT kits categorized as Trojan Horses.</div></div>
+
+          <!-- UNIT 10 MCQS (Q328 - Q342) = 15 MCQs -->
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q328</span>Which of the following is a Unix command to list all files in a directory?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>list</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>ls</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>dir</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>show</div></div><div class="mcq-expl">💡 ls lists files.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q329</span>What is the purpose of the chmod command in Unix?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Change file content</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Change owner</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>Change file permissions</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Change name</div></div><div class="mcq-expl">💡 chmod changes mode/permissions (rwx).</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q330</span>How do you delete a directory and its contents in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>del</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>remove -f</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>deleteall</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>rm -r</div></div><div class="mcq-expl">💡 rm -r removes recursively.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q331</span>What is the Unix command to display the present working directory?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>pwd</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>where</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>home</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>presentdir</div></div><div class="mcq-expl">💡 pwd = Print Working Directory.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q332</span>What is the core of the Unix operating system?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Shell</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Kernel</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Command</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Script</div></div><div class="mcq-expl">💡 Kernel interacts directly with hardware.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q333</span>What does the grep command do?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>Searches for a string in a file</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Deletes file</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Saves file</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>Moves file</div></div><div class="mcq-expl">💡 grep searches regex patterns in text.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q334</span>How do you search for a manual page in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>info</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>help</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>man</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>guide</div></div><div class="mcq-expl">💡 man <command> displays documentation.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q335</span>Which command is used to display the content of a file in Unix?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>show</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>cat</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>disp</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>display</div></div><div class="mcq-expl">💡 cat prints file contents.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q336</span>Which of the following is the symbol for piping in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>%</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>*</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>#</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>|</div></div><div class="mcq-expl">💡 | pipes output to next command.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q337</span>What does the ps command do in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Permissions</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Displays process status</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Current users</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>System info</div></div><div class="mcq-expl">💡 ps = Process Status.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q338</span>Which of the following is a process control command in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">A</span>kill</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>ctrlp</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>stopproc</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>ps</div></div><div class="mcq-expl">💡 kill sends termination signals.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q339</span>What command is used to change file ownership in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>chmod</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>chown</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>change</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>ownfile</div></div><div class="mcq-expl">💡 chown = change owner.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q340</span>What command is used to copy files in Unix/Linux?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>copy</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>cop</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">C</span>cp</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>duplicate</div></div><div class="mcq-expl">💡 cp is the copy command.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q341</span>What does the df command display?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>File size</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">B</span>Disk space usage</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Memory usage</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">D</span>CPU usage</div></div><div class="mcq-expl">💡 df reports file system disk free space.</div></div>
+          <div class="mcq-item" data-unit="u10"><div class="mcq-head"><div class="mcq-q"><span class="mcq-num">Q342</span>Which of the following file types does Unix/Linux not recognize?</div><span class="badge-tag bt-u10">Unit 10</span></div><div class="mcq-opts"><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">A</span>Regular file</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">B</span>Directory file</div><div class="opt-box" onclick="checkOpt(this, false)"><span class="opt-letter">C</span>Symbolic link file</div><div class="opt-box correct" onclick="checkOpt(this, true)"><span class="opt-letter">D</span>Executable file</div></div><div class="mcq-expl">💡 Executable is a permission bit (x), not an intrinsic file type.</div></div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 5: COMPLETE THEORY (ALL CHAPTERS 6 TO 10)            -->
+    <!-- ======================================================== -->
+    <main id="tab-theory" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>Complete Core Theory Guide (Chapters 6 to 10)</span>
+          <span class="badge-tag bt-u9">Exam Ready</span>
+        </div>
+
+        <div class="theory-grid">
+          <!-- Ch 6: Fragmentation -->
+          <div class="theory-card">
+            <div class="theory-title"><span>Internal vs External Fragmentation</span><span class="badge-tag bt-u6">Ch 6</span></div>
+            <ul class="theory-list">
+              <li><b>Internal Fragmentation:</b> Memory allocated to process is larger than requested; unused memory inside allocated partition is wasted (Fixed partitioning &amp; Paging).</li>
+              <li><b>External Fragmentation:</b> Total free space exists but is broken into non-contiguous holes scattered across RAM (Variable partitioning &amp; Segmentation).</li>
+              <li><b>Remedies:</b> <i>Compaction</i> shuffles memory contents to merge free holes. <i>Paging</i> completely eliminates external fragmentation.</li>
+            </ul>
+          </div>
+
+          <!-- Ch 6: Paging vs Segmentation -->
+          <div class="theory-card">
+            <div class="theory-title"><span>Paging vs Segmentation</span><span class="badge-tag bt-u6">Ch 6</span></div>
+            <ul class="theory-list">
+              <li><b>Paging:</b> Hardware memory management dividing process into <i>fixed-size pages</i> and physical RAM into <i>frames</i>. Transparent to programmer. Suffers from internal fragmentation.</li>
+              <li><b>Segmentation:</b> Logical division according to programmer's view into <i>variable-size segments</i> (code, stack, data, heap). Suffers from external fragmentation.</li>
+              <li>Paging uses a <i>Page Table</i> (page &rarr; frame); Segmentation uses a <i>Segment Table</i> (base &amp; limit).</li>
+            </ul>
+          </div>
+
+          <!-- Ch 7: Demand Paging & Page Fault -->
+          <div class="theory-card">
+            <div class="theory-title"><span>Demand Paging &amp; Page Fault Steps</span><span class="badge-tag bt-u7">Ch 7</span></div>
+            <ul class="theory-list">
+              <li><b>Demand Paging:</b> Pages are loaded into RAM <i>only when demanded</i> during execution (Lazy Swapper).</li>
+              <li><b>Page Fault Handling (6 Steps):</b>
+                1. CPU traps to OS on accessing unmapped page.<br>
+                2. Save CPU registers and process state.<br>
+                3. Check page table; determine page location on backing store.<br>
+                4. Find a free frame (or run replacement algorithm).<br>
+                5. Schedule disk I/O to read page into frame.<br>
+                6. Update page table valid bit &amp; restart interrupted instruction.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ch 7: Thrashing -->
+          <div class="theory-card">
+            <div class="theory-title"><span>Thrashing: Causes &amp; Remedies</span><span class="badge-tag bt-u7">Ch 7</span></div>
+            <ul class="theory-list">
+              <li><b>Definition:</b> A pathological state where the OS spends more time swapping pages than executing instructions, dropping CPU utilization to near zero.</li>
+              <li><b>Cause:</b> Too high a degree of multiprogramming. Allocated frames fall below the process's <i>Working Set</i>.</li>
+              <li><b>Remedies:</b>
+                1. <b>Working Set Model:</b> Keep total working set pages in RAM.<br>
+                2. <b>Page Fault Frequency (PFF):</b> Suspend/swap out processes when page fault frequency crosses upper threshold.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Ch 8: Disk Times & DMA -->
+          <div class="theory-card">
+            <div class="theory-title"><span>Seek Time, Rotational Latency &amp; DMA</span><span class="badge-tag bt-u8">Ch 8</span></div>
+            <ul class="theory-list">
+              <li><b>Seek Time:</b> Time taken by read/write head assembly to travel to designated cylinder.</li>
+              <li><b>Rotational Latency:</b> Time for target platter sector to rotate under head.</li>
+              <li><b>Transfer Time:</b> Time required to physically stream data to/from disk.</li>
+              <li><b>Direct Memory Access (DMA):</b> Specialized controller transferring blocks between I/O device and RAM <b>without continuous CPU intervention</b>, freeing CPU for tasks.</li>
+            </ul>
+          </div>
+
+          <!-- Ch 9: 8 Design Principles -->
+          <div class="theory-card" style="grid-column: 1 / -1;">
+            <div class="theory-title"><span>8 Design Principles of Security</span><span class="badge-tag bt-u9">Ch 9 · High Probability</span></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; font-size: 0.82rem; color: #cbd5e1; margin-top: 6px;">
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">1. Least Privilege:</b> Subject given only minimum rights to complete task.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">2. Fail-Safe Defaults:</b> Default access to any object is <b>none (denied)</b>.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">3. Economy of Mechanism:</b> Design must be simple and small to minimize errors.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">4. Complete Mediation:</b> <b>Every single access</b> checked by OS every time.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">5. Open Design:</b> Security must not depend on secret algorithms; open design.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">6. Separation of Privilege:</b> Multiple conditions needed to grant access.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">7. Least Common Mechanism:</b> Minimize mechanisms shared among users.</div>
+              <div style="background: #080910; padding: 8px; border-radius: 4px; border: 1px solid var(--card-border);"><b style="color: var(--accent-cyan);">8. User Acceptability:</b> Mechanism must be easy to use; otherwise bypassed.</div>
+            </div>
+          </div>
+
+          <!-- Ch 9: ACL vs C-List -->
+          <div class="theory-card">
+            <div class="theory-title"><span>ACL vs Capability List</span><span class="badge-tag bt-u9">Ch 9</span></div>
+            <ul class="theory-list">
+              <li><b>Access Control List (ACL):</b> Slicing matrix by <b>COLUMNS</b> (attached to File). Lists domains/users and rights. <i>Advantage:</i> Easy revocation. <i>Disadvantage:</i> Slower lookups.</li>
+              <li><b>Capability List (C-List):</b> Slicing matrix by <b>ROWS</b> (attached to Process). Lists objects and permitted rights. <i>Advantage:</i> Instant access checks. <i>Disadvantage:</i> Hard revocation.</li>
+            </ul>
+          </div>
+
+          <!-- Ch 10: Kernel Structure & Unix Features -->
+          <div class="theory-card">
+            <div class="theory-title"><span>Linux Kernel Subsystems &amp; Features</span><span class="badge-tag bt-u10">Ch 10</span></div>
+            <ul class="theory-list">
+              <li><b>System Call Interface:</b> User mode traps into kernel mode.</li>
+              <li><b>I/O Component:</b> VFS, Character &amp; Block drivers (with I/O Scheduler), Network sockets.</li>
+              <li><b>Memory Component:</b> Virtual memory, paging/replacement, page cache.</li>
+              <li><b>Process Component:</b> Creation/exit (<code>fork</code>, <code>exit</code>), signals, CPU scheduler.</li>
+              <li><b>Unix Features:</b> Multiuser, Multitasking, Everything is a file, Portable C code.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+
+    <!-- ======================================================== -->
+    <!-- TAB 6: COMPLETE LAB SHELL SCRIPTS (UNIT 10)              -->
+    <!-- ======================================================== -->
+    <main id="tab-scripts" class="tab-content">
+      <div class="card">
+        <div class="card-title">
+          <span>Linux Shell Scripting Master Guide &amp; Lab Codes</span>
+          <span class="badge-tag bt-u10">Unit 10 · 12%</span>
+        </div>
+
+        <div class="rules-box">
+          <div class="rules-title">📌 Shell Scripting Syntax Essentials in 2 Minutes</div>
+          <ul class="theory-list">
+            <li><b>Input / Output:</b> <code>echo "text"</code> and <code>read variable</code>.</li>
+            <li><b>Arithmetic:</b> Using `expr`: <code>ans=`expr $a + $b`</code> (escape multiplication: <code>\*</code>). Or using <code>$(( a + b ))</code>.</li>
+            <li><b>If-Condition Rule:</b> Mandatory space after <code>[</code> and before <code>]</code>! E.g.: <code>if [ $a -gt $b ]; then</code>.</li>
+            <li><b>Operators:</b> Numbers: <code>-eq, -ne, -gt, -ge, -lt, -le</code>. Logical: <code>-a</code> (AND), <code>-o</code> (OR).</li>
+          </ul>
+        </div>
+
+        <!-- 1. Multiplication Table -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">1. Multiplication Table of a Given Number (Practical-12 / Q345)</span>
+            <button class="copy-btn" onclick="copyCode('c-tbl')">Copy Script</button>
+          </div>
+          <pre id="c-tbl"><span class="comment"># Practical-12: Multiplication table using for loop</span>
+<span class="command">clear</span>
+<span class="command">echo</span> <span class="string">"Enter the number: "</span>
+<span class="command">read</span> <span class="var">n</span>
+<span class="keyword">for</span> (( <span class="var">i</span>=1; <span class="var">i</span>&lt;=10; <span class="var">i</span>++ ))
+<span class="keyword">do</span>
+  <span class="var">m</span>=$(<span class="command">expr</span> $<span class="var">n</span> \* $<span class="var">i</span>)
+  <span class="command">echo</span> <span class="string">"$n * $i = $m"</span>
+<span class="keyword">done</span></pre>
+        </div>
+
+        <!-- 2. Reverse a Number -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">2. Reverse of a Given Number (Practical-14 / Q346)</span>
+            <button class="copy-btn" onclick="copyCode('c-rev')">Copy Script</button>
+          </div>
+          <pre id="c-rev"><span class="comment"># Practical-14: Reverse of given number using while loop</span>
+<span class="command">echo</span> <span class="string">"Enter the number: "</span>
+<span class="command">read</span> <span class="var">n</span>
+<span class="var">rev</span>=0
+<span class="keyword">while</span> [ $<span class="var">n</span> -gt 0 ]
+<span class="keyword">do</span>
+  <span class="var">sd</span>=$(<span class="command">expr</span> $<span class="var">n</span> % 10)
+  <span class="var">rev</span>=$(<span class="command">expr</span> $<span class="var">rev</span> \* 10 + $<span class="var">sd</span>)
+  <span class="var">n</span>=$(<span class="command">expr</span> $<span class="var">n</span> / 10)
+<span class="keyword">done</span>
+<span class="command">echo</span> <span class="string">"Reverse number is $rev"</span></pre>
+        </div>
+
+        <!-- 3. Prime Number -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">3. Check Whether Number is Prime (Practical-17 / Q348)</span>
+            <button class="copy-btn" onclick="copyCode('c-prime')">Copy Script</button>
+          </div>
+          <pre id="c-prime"><span class="comment"># Practical-17: Prime number check</span>
+<span class="command">echo</span> <span class="string">"Enter a number: "</span>
+<span class="command">read</span> <span class="var">num</span>
+<span class="var">i</span>=2
+<span class="var">f</span>=0
+<span class="keyword">while</span> [ $<span class="var">i</span> -le `<span class="command">expr</span> $<span class="var">num</span> / 2` ]
+<span class="keyword">do</span>
+  <span class="keyword">if</span> [ `<span class="command">expr</span> $<span class="var">num</span> % $<span class="var">i</span>` -eq 0 ]
+  <span class="keyword">then</span>
+    <span class="var">f</span>=1
+  <span class="keyword">fi</span>
+  <span class="var">i</span>=`<span class="command">expr</span> $<span class="var">i</span> + 1`
+<span class="keyword">done</span>
+<span class="keyword">if</span> [ $<span class="var">f</span> -eq 1 ]; <span class="keyword">then</span> <span class="command">echo</span> <span class="string">"Composite number"</span>
+<span class="keyword">else</span> <span class="command">echo</span> <span class="string">"Prime number"</span>; <span class="keyword">fi</span></pre>
+        </div>
+
+        <!-- 4. Armstrong Number -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">4. Armstrong Number Check (Practical-15 / Q347)</span>
+            <button class="copy-btn" onclick="copyCode('c-arm')">Copy Script</button>
+          </div>
+          <pre id="c-arm"><span class="comment"># Practical-15: Armstrong number (e.g. 153 = 1^3 + 5^3 + 3^3)</span>
+<span class="command">echo</span> <span class="string">"Enter number: "</span>; <span class="command">read</span> <span class="var">c</span>
+<span class="var">x</span>=$<span class="var">c</span>; <span class="var">sum</span>=0
+<span class="keyword">while</span> [ $<span class="var">x</span> -gt 0 ]
+<span class="keyword">do</span>
+  <span class="var">r</span>=`<span class="command">expr</span> $<span class="var">x</span> % 10`
+  <span class="var">n</span>=`<span class="command">expr</span> $<span class="var">r</span> \* $<span class="var">r</span> \* $<span class="var">r</span>`
+  <span class="var">sum</span>=`<span class="command">expr</span> $<span class="var">sum</span> + $<span class="var">n</span>`
+  <span class="var">x</span>=`<span class="command">expr</span> $<span class="var">x</span> / 10`
+<span class="keyword">done</span>
+<span class="keyword">if</span> [ $<span class="var">sum</span> -eq $<span class="var">c</span> ]; <span class="keyword">then</span> <span class="command">echo</span> <span class="string">"Armstrong Number"</span>
+<span class="keyword">else</span> <span class="command">echo</span> <span class="string">"Not Armstrong Number"</span>; <span class="keyword">fi</span></pre>
+        </div>
+
+        <!-- 5. Greatest of Three Numbers -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">5. Greatest of Three Numbers using -a (Practical-6 / Q351)</span>
+            <button class="copy-btn" onclick="copyCode('c-gt')">Copy Script</button>
+          </div>
+          <pre id="c-gt"><span class="command">echo</span> <span class="string">"Enter values of a, b, c: "</span>; <span class="command">read</span> <span class="var">a</span> <span class="var">b</span> <span class="var">c</span>
+<span class="keyword">if</span> [ $<span class="var">a</span> -gt $<span class="var">b</span> -a $<span class="var">a</span> -gt $<span class="var">c</span> ]
+<span class="keyword">then</span>
+  <span class="command">echo</span> <span class="string">"$a is largest"</span>
+<span class="keyword">elif</span> [ $<span class="var">b</span> -gt $<span class="var">a</span> -a $<span class="var">b</span> -gt $<span class="var">c</span> ]
+<span class="keyword">then</span>
+  <span class="command">echo</span> <span class="string">"$b is largest"</span>
+<span class="keyword">else</span>
+  <span class="command">echo</span> <span class="string">"$c is largest"</span>
+<span class="keyword">fi</span></pre>
+        </div>
+
+        <!-- 6. Palindrome String -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">6. Palindrome String using Character Extraction (Practical-28 / Q349)</span>
+            <button class="copy-btn" onclick="copyCode('c-pal')">Copy Script</button>
+          </div>
+          <pre id="c-pal"><span class="comment"># Practical-28: Palindrome string using cut -c</span>
+<span class="command">clear</span>
+<span class="command">echo</span> <span class="string">"Enter string: "</span>; <span class="command">read</span> <span class="var">str</span>
+<span class="var">len</span>=`<span class="command">echo</span> $<span class="var">str</span> | <span class="command">wc</span> -c`
+<span class="var">len</span>=`<span class="command">expr</span> $<span class="var">len</span> - 1`
+<span class="var">i</span>=1
+<span class="var">j</span>=`<span class="command">expr</span> $<span class="var">len</span> / 2`
+<span class="keyword">while</span> [ $<span class="var">i</span> -le $<span class="var">j</span> ]
+<span class="keyword">do</span>
+  <span class="var">k</span>=`<span class="command">echo</span> $<span class="var">str</span> | <span class="command">cut</span> -c $<span class="var">i</span>`
+  <span class="var">l</span>=`<span class="command">echo</span> $<span class="var">str</span> | <span class="command">cut</span> -c $<span class="var">len</span>`
+  <span class="keyword">if</span> [ <span class="string">"$k"</span> != <span class="string">"$l"</span> ]
+  <span class="keyword">then</span>
+    <span class="command">echo</span> <span class="string">"String is NOT palindrome"</span>
+    <span class="keyword">exit</span>
+  <span class="keyword">fi</span>
+  <span class="var">i</span>=`<span class="command">expr</span> $<span class="var">i</span> + 1`
+  <span class="var">len</span>=`<span class="command">expr</span> $<span class="var">len</span> - 1`
+<span class="keyword">done</span>
+<span class="command">echo</span> <span class="string">"String IS palindrome"</span></pre>
+        </div>
+
+        <!-- 7. Array Sorting -->
+        <div class="script-block">
+          <div class="script-header">
+            <span class="script-title">7. Sort Array of Numbers in Ascending Order (Practical-20 / Q350)</span>
+            <button class="copy-btn" onclick="copyCode('c-sort')">Copy Script</button>
+          </div>
+          <pre id="c-sort"><span class="comment"># Practical-20: Array Bubble sort</span>
+<span class="command">clear</span>
+<span class="command">echo</span> <span class="string">"Enter number of elements: "</span>; <span class="command">read</span> <span class="var">n</span>
+<span class="command">echo</span> <span class="string">"Enter array elements: "</span>
+<span class="keyword">for</span> (( <span class="var">i</span>=0; <span class="var">i</span>&lt;<span class="var">n</span>; <span class="var">i</span>++ )); <span class="keyword">do</span> <span class="command">read</span> <span class="var">a</span>[$<span class="var">i</span>]; <span class="keyword">done</span>
+<span class="keyword">for</span> (( <span class="var">i</span>=0; <span class="var">i</span>&lt;<span class="var">n</span>; <span class="var">i</span>++ ))
+<span class="keyword">do</span>
+  <span class="keyword">for</span> (( <span class="var">j</span>=$<span class="var">i</span>; <span class="var">j</span>&lt;<span class="var">n</span>; <span class="var">j</span>++ ))
+  <span class="keyword">do</span>
+    <span class="keyword">if</span> [ ${<span class="var">a</span>[$<span class="var">i</span>]} -gt ${<span class="var">a</span>[$<span class="var">j</span>]} ]
+    <span class="keyword">then</span>
+      <span class="var">temp</span>=${<span class="var">a</span>[$<span class="var">i</span>]}
+      <span class="var">a</span>[$<span class="var">i</span>]=${<span class="var">a</span>[$<span class="var">j</span>]}
+      <span class="var">a</span>[$<span class="var">j</span>]=$<span class="var">temp</span>
+    <span class="keyword">fi</span>
+  <span class="keyword">done</span>
+<span class="keyword">done</span>
+<span class="command">echo</span> <span class="string">"Array after sorting: "</span>
+<span class="keyword">for</span> (( <span class="var">i</span>=0; <span class="var">i</span>&lt;<span class="var">n</span>; <span class="var">i</span>++ )); <span class="keyword">do</span> <span class="command">echo</span> ${<span class="var">a</span>[$<span class="var">i</span>]}; <span class="keyword">done</span></pre>
+        </div>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    // Tab switching
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
+      
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+      if (btn) {
+        btn.classList.add('active');
+        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // MCQ Filter
+    function filterMCQ(unit, btn) {
+      btn.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const items = document.querySelectorAll('.mcq-item');
+      items.forEach(item => {
+        if (unit === 'all' || item.getAttribute('data-unit') === unit) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Robust Quiz Mode Toggle (No green dots when in Quiz mode)
+    let isQuizMode = true;
+    function toggleQuizMode() {
+      isQuizMode = !isQuizMode;
+      const body = document.body;
+      const toggleBtn = document.getElementById('quiz-toggle-btn');
+      
+      if (isQuizMode) {
+        body.classList.remove('show-answers');
+        body.classList.add('quiz-mode');
+        toggleBtn.innerText = 'Mode: Quiz (Hidden)';
+        toggleBtn.style.color = 'var(--accent-cyan)';
+      } else {
+        body.classList.remove('quiz-mode');
+        body.classList.add('show-answers');
+        toggleBtn.innerText = 'Mode: Answers Revealed';
+        toggleBtn.style.color = 'var(--accent-green)';
+      }
+    }
+
+    // Interactive option click in Quiz mode
+    function checkOpt(el, isCorrect) {
+      if (!isQuizMode) return;
+      const parent = el.closest('.mcq-opts');
+      parent.querySelectorAll('.opt-box').forEach(ob => {
+        ob.classList.remove('user-correct', 'user-wrong');
+      });
+
+      if (isCorrect) {
+        el.classList.add('user-correct');
+      } else {
+        el.classList.add('user-wrong');
+        const correctBox = parent.querySelector('.opt-box.correct');
+        if (correctBox) correctBox.classList.add('user-correct');
+      }
+      const expl = el.closest('.mcq-item').querySelector('.mcq-expl');
+      if (expl) expl.style.display = 'block';
+    }
+
+    function copyCode(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Script copied to clipboard!');
+      });
+    }
+  </script>
+</body>
+</html>
