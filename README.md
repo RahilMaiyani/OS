@@ -1,169 +1,357 @@
 # OS T2 Exam Master Preparation (Units 6 to 10)
 
-This master review is tailored for your **50-mark exam** covering **Chapters 6 through 10**. It concentrates on the **35–40+ marks** target by locking 15/15 in Numericals, 20+ in MCQs, and 5–8 marks in core high-yield theory and shell scripts.
+This master document is fully rebuilt and aligned with your **L.J. Institute Official Notes & Practice Books**.
 
-The standalone interactive file with a **dark Vercel theme** is available here:
-🔗 **[Open Standalone Dark Vercel HTML Prep Guide](file:///C:/Users/Rahil.Maiyani/.gemini/antigravity/scratch/os_t2_exam_prep.html)**
-
----
-
-## 📊 Exam Blueprint & Weightage Breakdown
-
-| Chapter | Title | Weightage | Scoring Focus |
-| :---: | :--- | :---: | :--- |
-| **Unit 6** | **Memory Management Policies** | **15% (15M)** | Allocation Numericals (First/Best/Worst Fit), TLB EMAT Math, Paging vs Segmentation |
-| **Unit 7** | **Basics of Virtual Memory** | **10% (10M)** | Page Replacement (FIFO, LRU, Optimal), Belady's Anomaly, Demand Paging & Thrashing |
-| **Unit 8** | **Secondary Storage & I/O Management** | **8% (8M)** | Disk Scheduling Algorithms (FCFS, SSTF, SCAN, LOOK, C-SCAN, C-LOOK), Seek/Rotational Time, DMA |
-| **Unit 9** | **Security and Protection Mechanism** | **5% (5M)** | High-probability MCQs, Malware definitions (Worm vs Virus vs Trojan), Access Matrix/ACL |
-| **Unit 10** | **Unix / Linux Operating System** | **12% (12M)** | Command MCQs (`chmod`, `rm -r`, `grep`, `ps`, `df`), Roles of Shell & Kernel, Basic Shell Scripts |
-| **Total** | | **50 Marks** | **25 MCQs (25M) + 15 Numericals (15M) + 10 Theory (10M)** |
+🔗 **[Open Standalone Mobile-Optimized HTML Portal](file:///C:/Users/Rahil.Maiyani/.gemini/antigravity/scratch/os_t2_exam_prep.html)**
 
 ---
 
-## 🎯 The Guaranteed 35–40 Marks Strategy
+## 📊 Exam Blueprint & Marks Distribution (Total: 50 Marks)
 
-```
-  ┌──────────────────────────────┐
-  │  Numericals (Units 6, 7, 8)  │ ──► 15 / 15 Marks (100% predictable)
-  └──────────────┬───────────────┘
-                 │
-  ┌──────────────▼──────────────┐
-  │ Practice Book MCQs (75 total)│ ──► 18 - 22 Marks (Direct hits)
-  └──────────────┬───────────────┘
-                 │
-  ┌──────────────▼──────────────┐
-  │ 5 Short Theory & 1-2 Scripts │ ──► 5 - 8 Marks
-  └─────────────────────────────┘
-  ──────────────────────────────────────────────────────────
-  TOTAL SCORE ESTIMATE: 38 - 43 / 50 Marks
-```
+| Chapter | Title | Weightage | Target Marks | High-Yield Coverage |
+| :---: | :--- | :---: | :---: | :--- |
+| **Unit 6** | **Memory Management Policies** | **15% (15M)** | 12–14M | First/Best/Worst/Next-Fit, Starting Addr, TLB EMAT, Fragmentation, Paging vs Segmentation |
+| **Unit 7** | **Basics of Virtual Memory** | **10% (10M)** | 8–10M | FIFO, LRU, Optimal, Belady's Anomaly, NRU Matrix, Second Chance, Demand Paging, Thrashing |
+| **Unit 8** | **Secondary Storage & I/O Management** | **8% (8M)** | 7–8M | Disk Scheduling (FCFS, SSTF, SCAN, LOOK, C-SCAN, C-LOOK), Seek Time & Rotational Latency, DMA |
+| **Unit 9** | **Security & Protection Mechanism** | **5% (5M)** | 4–5M | 8 Design Principles of Security, Domain Protection, Access Matrix, ACL vs C-List, Malware |
+| **Unit 10** | **Unix / Linux Operating System** | **12% (12M)** | 10–12M | Kernel Subsystems, Unix vs Windows, Elementary Commands, Shell Scripts (Practicals 1–28) |
+| **Total** | | **50 Marks** | **40–48M** | **25 MCQs (25M) + 15 Numericals (15M) + 10 Theory (10M)** |
 
 ---
 
-## 🧮 Section 1: All Practice Book Numericals Solved
+## 📝 ALL 80 PRACTICE BOOK MCQs WITH SOLUTIONS & LOGIC
 
-### 1. Contiguous Allocation (Unit 6: Q219, Q220, Q228)
-* **Given Partitions:** `100K, 500K, 200K, 300K, 600K` (in order).
-* **Incoming Processes:** `212K, 417K, 112K, 426K` (in order).
-* **First-Fit:**
-  * P1 (212K) &rarr; `500K` (leaving 288K)
-  * P2 (417K) &rarr; `600K` (leaving 183K)
-  * P3 (112K) &rarr; `288K` (leaving 176K)
-  * P4 (426K) &rarr; **FAILS (Must wait)** because remaining holes are `100K, 176K, 200K, 300K, 183K` (largest is only 300K).
-* **Best-Fit:**
-  * P1 (212K) &rarr; `300K` (leaving 88K)
-  * P2 (417K) &rarr; `500K` (leaving 83K)
-  * P3 (112K) &rarr; `200K` (leaving 88K)
-  * P4 (426K) &rarr; `600K` (leaving 174K)
-  * **Result:** All 4 processes fit! **Best-Fit is the most efficient**.
-* **Worst-Fit:**
-  * P1 &rarr; `600K` (388K left), P2 &rarr; `500K` (83K left), P3 &rarr; `388K` (276K left), P4 (426K) **FAILS**.
+### Unit 6: Memory Management Policies (21 MCQs)
 
----
-
-### 2. Effective Memory Access Time (EMAT) with TLB (Unit 6: Q223, Q224, Q227)
-* **General Formula:**
-  $$\text{EMAT} = t_{TLB} + \left[\alpha \times t_{mem}\right] + \left[(1 - \alpha) \times (t_{page\_table} + t_{mem})\right]$$
-* **Q223 (No TLB search overhead):**
-  * $\alpha = 0.75$, $t_{mem} = 100\text{ ns}$, $t_{pt} = 100\text{ ns}$.
-  * $\text{EMAT} = 0.75 \times 100 + 0.25 \times (100 + 100) = 75 + 50 = \mathbf{125\text{ ns}}$.
-* **Q224 (No TLB search overhead):**
-  * $\alpha = 0.85$, $t_{mem} = 100\text{ ns}$, $t_{pt} = 50\text{ ns}$.
-  * $\text{EMAT} = 0.85 \times 100 + 0.15 \times (50 + 100) = 85 + 22.5 = \mathbf{107.5\text{ ns}}$.
-* **Q227 (With 20ns TLB search overhead):**
-  * $\alpha = 0.75$, $t_{mem} = 100\text{ ns}$, $t_{pt} = 100\text{ ns}$, $t_{TLB} = 20\text{ ns}$.
-  * $\text{EMAT} = 0.75 \times (20 + 100) + 0.25 \times (20 + 100 + 100) = 90 + 55 = \mathbf{145\text{ ns}}$.
-
----
-
-### 3. Page Replacement Algorithms (Unit 7: Q267, Q268, Q269, Q273)
-* **Reference String:** `7, 0, 1, 2, 0, 3, 0, 4, 2, 3` with **3 frames** (initially empty).
-  * **FIFO:** Replaces oldest loaded page &rarr; **9 Page Faults**, 1 Hit.
-  * **LRU:** Replaces least recently used page (look backward) &rarr; **8 Page Faults**, 2 Hits.
-  * **Optimal (OPT):** Replaces page not used for longest in future (look forward) &rarr; **6 Page Faults**, 4 Hits.
-* **Belady's Anomaly (Q277):**
-  * String: `5, 4, 3, 2, 5, 4, 6, 5, 4, 3, 2, 6`.
-  * With 3 frames: **9 Faults**.
-  * With 4 frames: **10 Faults** (Faults increase when frames increase &rarr; proves Belady's Anomaly in FIFO).
-
----
-
-### 4. Disk Scheduling Algorithms (Unit 8: Q303)
-* **Setup:** 200 Cylinders (0 to 199). Head initially at **53**, moving in **increasing** direction.
-* **Request Queue:** `98, 183, 37, 122, 14, 124, 65, 67`.
-* **Total Head Movements (THM):**
-  * **FCFS:** Strict queue order &rarr; **640 Cylinders**.
-  * **SSTF:** Closest track next ($53 \to 65 \to 67 \to 37 \to 14 \to 98 \to 122 \to 124 \to 183$) &rarr; **236 Cylinders** (Optimal).
-  * **SCAN:** Goes up to boundary 199, then reverses ($53 \to 199 \to 14$) &rarr; $(199 - 53) + (199 - 14) = \mathbf{331\text{ Cylinders}}$.
-  * **LOOK:** Goes up only to last request 183, then reverses ($53 \to 183 \to 14$) &rarr; $(183 - 53) + (183 - 14) = \mathbf{299\text{ Cylinders}}$.
-  * **C-SCAN:** Goes up to 199, jumps to 0 without servicing, scans up to 37 &rarr; $(199 - 53) + (199 - 0) + (37 - 0) = \mathbf{382\text{ Cylinders}}$.
-  * **C-LOOK:** Goes up to 183, jumps to 14 without servicing, scans up to 37 &rarr; $(183 - 53) + (183 - 14) + (37 - 14) = \mathbf{322\text{ Cylinders}}$.
-* **Seek Time Conversion:** $\text{Seek Time} = \text{THM} \times (\text{time per cylinder})$. E.g., at 5ms/cyl for SSTF: $236 \times 5 = 1180\text{ ms} = 1.18\text{ s}$.
-
----
-
-## 💡 Section 2: High-Yield Short Theory Points
-
-1. **Internal vs External Fragmentation (Unit 6):**
-   * *Internal:* Unused space within an allocated partition (Fixed Partitioning, Paging).
-   * *External:* Total free memory exists but is fragmented into scattered unusable non-contiguous holes (Variable Partitioning, Segmentation). Paging eliminates external fragmentation.
-2. **Paging vs Segmentation (Unit 6):**
-   * Paging divides memory into fixed-size blocks (Pages/Frames; hardware view).
-   * Segmentation divides memory into variable-sized logical modules (Code, Stack, Heap; programmer view).
-3. **Demand Paging & Page Fault (Unit 7):**
-   * Pages are loaded only on demand when referenced.
-   * A Page Fault is a hardware interrupt triggered when accessing an unmapped/unloaded page.
-4. **Thrashing (Unit 7):**
-   * A system condition where processes spend more time swapping pages than executing instructions. Caused by overcommitting degree of multiprogramming. Controlled using the **Working Set Model** and **Page Fault Frequency (PFF)**.
-5. **Seek Time vs Rotational Latency (Unit 8):**
-   * *Seek Time:* Time for disk arm to travel to the designated track/cylinder.
-   * *Rotational Latency:* Time for the target sector on the platter to rotate under the read/write head.
-6. **Direct Memory Access - DMA (Unit 8):**
-   * Allows high-speed I/O devices to transfer data directly to/from main memory without continuous CPU intervention, freeing the CPU for compute tasks.
-7. **Malware Taxonomy (Unit 9):**
-   * *Virus:* Code fragment attaching to legitimate host files.
-   * *Worm:* Standalone self-replicating network program.
-   * *Trojan Horse:* Malicious software disguised as genuine/useful.
-   * *Trapdoor:* Secret intentional bypass in code authentication.
-8. **Unix Shell & Kernel (Unit 10):**
-   * *Kernel:* Heart of Unix running in privileged mode, managing CPU, memory, and devices.
-   * *Shell:* User interface/command interpreter translating user commands into kernel system calls.
+* **Q194:** In memory management, Base register holds the _________ Address.
+  * Options: A) Smallest, B) largest, C) Average, D) None of the mentioned
+  * **Answer: [A] Smallest** | *Logic: The base register defines the smallest legal physical memory address allocated to a process.*
+* **Q195:** The limit register specifies the_________.
+  * Options: A) Smallest Address, B) Largest Address, C) Size of the Range Process, D) Process
+  * **Answer: [C] Size of the Range Process** | *Logic: The limit register holds the range/size of the logical address space.*
+* **Q196:** The way of binding of instruction and data to main memory address is/are:
+  * Options: A) Compile time, B) Load time, C) Execution time, D) All of the above
+  * **Answer: [D] All of the above** | *Logic: Address binding can take place at compile time, load time, or run/execution time.*
+* **Q197:** An address generated by CPU is known as _______ Address.
+  * Options: A) Physical, B) Logical, C) Scientific, D) Specific
+  * **Answer: [B] Logical** | *Logic: The CPU generates logical (virtual) addresses.*
+* **Q198:** Logical address is also called ____________ Address.
+  * Options: A) Physical, B) Scientific, C) Virtual, D) Specific
+  * **Answer: [C] Virtual** | *Logic: Logical address and virtual address are synonymous.*
+* **Q199:** An address loaded into the memory address register (MAR) of memory is commonly referred to as:
+  * Options: A) Physical, B) Scientific, C) Virtual, D) Specific
+  * **Answer: [A] Physical** | *Logic: The memory hardware and MAR only see actual physical RAM addresses.*
+* **Q200:** The event of copying process from main memory to hard disk is known as:
+  * Options: A) Roll in, B) Roll out, C) Rolling, D) Roll back
+  * **Answer: [B] Roll out** | *Logic: Swapping out from memory to backing store = Roll out.*
+* **Q201:** The event of copying process from hard disk to main memory is known as:
+  * Options: A) Roll in, B) Roll out, C) Rolling, D) Roll back
+  * **Answer: [A] Roll in** | *Logic: Swapping in from disk to main memory = Roll in.*
+* **Q202:** The set of all logical addresses generated by a program is:
+  * Options: A) Physical Address Space, B) Logical Address Space, C) Scientific Address Space, D) Specific Address Space
+  * **Answer: [B] Logical Address Space** | *Logic: By definition, the set of all logical addresses is the Logical Address Space.*
+* **Q203:** In an OS, ____________ is a device or location that stores data that is not currently in the main memory.
+  * Options: A) physical store, B) space store, C) address store, D) backing store
+  * **Answer: [D] backing store** | *Logic: Backing store (usually a hard disk partition or swap file) holds non-resident data.*
+* **Q207:** In memory management allocation algorithm used is/are:
+  * Options: A) First Fit, B) Best Fit, C) Worst Fit, D) All of the mentioned
+  * **Answer: [D] All of the mentioned** | *Logic: First-Fit, Best-Fit, and Worst-Fit are standard contiguous partition allocation algorithms.*
+* **Q208:** Which of the below factor considered the most in management of memory:
+  * Options: A) Efficient use of memory, B) Speedy allocation, C) Speedy deallocation, D) All of the mentioned
+  * **Answer: [D] All of the mentioned** | *Logic: A good memory manager balances space efficiency with fast allocation and reclamation.*
+* **Q209:** _______________ a chunk of physical memory that is the same size as a system page.
+  * Options: A) frame, B) Pages, C) Mode, D) Space
+  * **Answer: [A] frame** | *Logic: Physical memory is divided into fixed-size frames.*
+* **Q210:** Virtual memory divided into small fixed size chunks of the same size is known as:
+  * Options: A) frame, B) Pages, C) Mode, D) Space
+  * **Answer: [B] Pages** | *Logic: Logical/virtual memory is divided into fixed-size pages.*
+* **Q211:** The number is used as an index into a page table is:
+  * Options: A) Index number, B) Page number, C) Page Offset, D) Frame Offset
+  * **Answer: [B] Page number** | *Logic: The page table is indexed by the page number ($p$).*
+* **Q212:** To define the physical memory address, frame number is combined with:
+  * Options: A) Index number, B) Page number, C) Page Offset, D) Frame Offset
+  * **Answer: [C] Page Offset** | *Logic: $\text{Physical Address} = (\text{Frame Number } f \times \text{Page Size}) + \text{Offset } d$.*
+* **Q229:** Logical memory is broken into blocks of the same size called:
+  * Options: A) frames, B) Backing Store, C) Pages, D) None of these
+  * **Answer: [C] Pages** | *Logic: Blocks of logical memory are called pages.*
+* **Q230:** The memory management scheme that permits the physical address space of a process to be non-contiguous is:
+  * Options: A) Framing, B) Modelling, C) Paging, D) Allocating
+  * **Answer: [C] Paging** | *Logic: Paging allows pages to be mapped to non-contiguous physical frames anywhere in RAM.*
+* **Q231:** To define the physical memory address, frame number is combined with:
+  * Options: A) Index number, B) Page number, C) Page Offset, D) Frame Offset
+  * **Answer: [C] Page Offset** | *Logic: Repeat question in PB; Frame number is combined with Page Offset.*
+* **Q232:** Each entry in TLB consists of:
+  * Options: A) a key, B) a value, C) Both A and B, D) None of these
+  * **Answer: [C] Both A and B** | *Logic: TLB is an associative cache holding a Key (page number tag) and a Value (frame number).*
+* **Q233:** ______________ is a memory administration approach used in operating systems that divides memory into multiple-sized segments.
+  * Options: A) Segmentation, B) Paging, C) Frame, D) Offset
+  * **Answer: [A] Segmentation** | *Logic: Segmentation divides memory into variable-sized logical segments (code, data, stack).*
 
 ---
 
-## 💻 Section 3: Essential Shell Scripts (Unit 10)
+### Unit 7: Basics of Virtual Memory (21 MCQs)
 
-* **Multiplication Table:**
-  ```bash
-  read -p "Enter number: " n
-  for i in {1..10}; do
-    echo "$n x $i = $(( n * i ))"
-  done
-  ```
-* **Reverse a Number:**
-  ```bash
-  read -p "Enter number: " n
-  rev=0
-  while [ $n -gt 0 ]; do
-    rem=$(( n % 10 ))
-    rev=$(( rev * 10 + rem ))
-    n=$(( n / 10 ))
-  done
-  echo "Reversed: $rev"
-  ```
-* **Check Palindrome String:**
-  ```bash
-  read -p "Enter string: " s
-  if [ "$s" = "$(echo "$s" | rev)" ]; then
-    echo "Palindrome"
-  else
-    echo "Not Palindrome"
-  fi
-  ```
-* **Greatest of Three Numbers:**
-  ```bash
-  read a b c
-  if [ $a -ge $b ] && [ $a -ge $c ]; then echo "Max: $a"
-  elif [ $b -ge $a ] && [ $b -ge $c ]; then echo "Max: $b"
-  else echo "Max: $c"; fi
-  ```
+* **Q240:** What is the primary purpose of virtual memory?
+  * Options: A) Increase physical memory, B) Allow larger programs to run on limited physical memory, C) Speed up memory access, D) Reduce the size of applications
+  * **Answer: [B] Allow larger programs to run on limited physical memory** | *Logic: It enables execution of processes that are larger than available physical RAM.*
+* **Q241:** Which of the following is a benefit of using virtual memory?
+  * Options: A) Elimination of paging, B) Increased security, C) Simplified memory management, D) Faster disk operations
+  * **Answer: [B] Increased security** | *Logic: PB Answer key: Virtual memory enhances security via address isolation and memory protection.*
+* **Q242:** In a paged memory system, what is a page?
+  * Options: A) A fixed-size block of memory, B) A variable-size block of memory, C) A section of a process, D) A type of CPU register
+  * **Answer: [A] A fixed-size block of memory** | *Logic: A page is a fixed-size logical memory block.*
+* **Q243:** Which of the following statements is correct regarding virtual memory?
+  * Options: A) It allows processes to exceed physical memory limits, B) It eliminates the need for physical memory, C) It requires all data to reside in physical memory, D) It is only used in multiprogramming systems
+  * **Answer: [A] It allows processes to exceed physical memory limits** | *Logic: Processes can be much larger than installed physical RAM.*
+* **Q244:** _____ is the concept in which a process is copied into the main memory from the secondary memory according to the requirement.
+  * Options: A) Paging, B) Demand paging, C) Segmentation, D) Swapping
+  * **Answer: [B] Demand paging** | *Logic: In demand paging, pages are loaded strictly when required.*
+* **Q245:** When a program tries to access a page that is mapped in address space but not loaded in physical memory, then:
+  * Options: A) segmentation fault occurs, B) fatal error occurs, C) page fault occurs, D) no error occurs
+  * **Answer: [C] page fault occurs** | *Logic: Missing page in RAM generates a hardware trap called a page fault.*
+* **Q246:** Virtual memory is:
+  * Options: A) An extremely large main memory, B) An extremely large secondary memory, C) An illusion of extremely large main memory, D) A type of memory used in super computers
+  * **Answer: [C] An illusion of extremely large main memory** | *Logic: Virtual memory is an illusion provided by OS and MMU hardware.*
+* **Q247:** _________ is a high speed cache used to hold recently referenced page table entries a part of paged virtual memory.
+  * Options: A) Translation Lookaside buffer, B) Inverse page table, C) Segmented page table, D) All the above
+  * **Answer: [A] Translation Lookaside buffer** | *Logic: TLB (Translation Lookaside Buffer) caches active page-to-frame translations.*
+* **Q248:** In a virtual memory environment:
+  * Options: A) segmentation and page tables are stored in the cache and do not add any substantial overhead, B) slow down the computer system considerable, C) segmentation and page tables are stored in the RAM, D) none of the above
+  * **Answer: [C] segmentation and page tables are stored in the RAM** | *Logic: Page tables and segment tables reside in physical RAM.*
+* **Q249:** Demand paged memory allocation:
+  * Options: A) allows the virtual address space to be independent of the physical memory, B) allows the virtual address space to be a multiple of the physical memory size, C) allows deadlock to be detected in paging schemes, D) is present only in Windows NT
+  * **Answer: [A] allows the virtual address space to be independent of the physical memory** | *Logic: Programs are written independently of the actual physical RAM capacity.*
+* **Q250:** Dirty bit is used to show:
+  * Options: A) Page with corrupted data, B) Wrong page in memory, C) Page that is modified after being loaded in the cache memory, D) page that is less frequently accessed
+  * **Answer: [C] Page that is modified after being loaded in the cache memory** | *Logic: Dirty bit = 1 indicates page was written to, so it must be flushed to disk before eviction.*
+* **Q251:** If hardware does not support _________ then a multi-user and multi-processing operating system cannot be implemented.
+  * Options: A) At least two modes of CPU execution, B) Demand paging, C) DMA for disk transfer, D) Address translation
+  * **Answer: [B] Demand paging** | *Logic: Practice Book official answer key explicitly marks [B] Demand paging.*
+* **Q257:** What does the term 'page fault' refer to?
+  * Options: A) Accessing a page that is not in memory, B) A failure in the page replacement algorithm, C) A system crash caused by paging, D) The successful loading of a page into memory
+  * **Answer: [A] Accessing a page that is not in memory** | *Logic: Triggered when the accessed page's valid bit is 0.*
+* **Q258:** What does thrashing refer to in the context of virtual memory?
+  * Options: A) Inefficient disk usage, B) Excessive page faults leading to constant swapping, C) Increasing physical memory, D) A method to optimize memory access
+  * **Answer: [B] Excessive page faults leading to constant swapping** | *Logic: Thrashing occurs when a process spends more time swapping than executing.*
+* **Q259:** Effective access time is directly proportional to:
+  * Options: A) page-fault rate, B) hit ratio, C) memory access time, D) none of the mentioned
+  * **Answer: [A] page-fault rate** | *Logic: Because disk servicing takes milliseconds ($10^6\text{ ns}$), EMAT scales linearly with page-fault rate $p$.*
+* **Q260:** In FIFO page replacement algorithm, when a page must be replaced:
+  * Options: A) oldest page is chosen, B) newest page is chosen, C) random page is chosen, D) none of the mentioned
+  * **Answer: [A] oldest page is chosen** | *Logic: First-In First-Out evicts the page loaded earliest.*
+* **Q261:** Which algorithm chooses the page that has not been used for the longest period of time whenever the page required to be replaced?
+  * Options: A) first in first out algorithm, B) additional reference bit algorithm, C) least recently used algorithm, D) counting based page replacement algorithm
+  * **Answer: [C] least recently used algorithm** | *Logic: LRU looks back at past references and evicts the least recently accessed page.*
+* **Q262:** A process is thrashing if:
+  * Options: A) it is spending more time paging than executing, B) it is spending less time paging than executing, C) page fault occurs, D) swapping can not take place
+  * **Answer: [A] it is spending more time paging than executing** | *Logic: Formal definition of thrashing.*
+* **Q263:** Working set model for page replacement is based on the assumption of:
+  * Options: A) modularity, B) locality, C) globalization, D) random access
+  * **Answer: [B] locality** | *Logic: It relies directly on the Principle of Locality of Reference (temporal & spatial).*
+* **Q264:** Consider a virtual memory system that uses FIFO. Statement 1: Sometimes page fault rate is increased if frames allocated is increased. Statement 2: Some programs do not exhibit locality. Which is true?
+  * Options: A) 1 is false and 2 is true, B) both 1 and 2 are false, C) both 1 and 2 are true but 2 is not the reason for 1, D) both 1 and 2 are true and 2 is the reason for 1
+  * **Answer: [C] both 1 and 2 are true but 2 is not the reason for 1** | *Logic: Belady's Anomaly (Statement 1) occurs because FIFO is not a stack algorithm, not because of locality.*
+* **Q265:** What is the impact of thrashing?
+  * Options: A) It improves system performance, B) It implies excessive page I/O, C) It decreases the degree of multiprogramming, D) It reduces page I/O
+  * **Answer: [C] It decreases the degree of multiprogramming** | *Logic: To resolve thrashing, the OS must swap out entire processes, reducing the degree of multiprogramming.*
+
+---
+
+### Unit 8: Secondary Storage & I/O Management (8 MCQs)
+
+* **Q282:** The ______ keeps state information about the use of I/O components.
+  * Options: A) CPU, B) OS, C) Kernel, D) Shell
+  * **Answer: [C] Kernel** | *Logic: PB Answer key: The kernel manages device status tables and I/O control blocks.*
+* **Q283:** When hardware is accessed by reading and writing to the specific memory locations, then it is called:
+  * Options: A) port-mapped I/O, B) controller-mapped I/O, C) bus-mapped I/O, D) memory-mapped I/O
+  * **Answer: [D] memory-mapped I/O** | *Logic: Device registers are mapped directly to memory addresses.*
+* **Q284:** The heads of the magnetic disk are attached to a ______ that moves all the heads as a unit.
+  * Options: A) spindle, B) track, C) disk arm, D) pin
+  * **Answer: [C] disk arm** | *Logic: The read/write heads are mounted on a common disk arm assembly.*
+* **Q285:** The ______ consists of two key components: the initial startup time, and the time taken to traverse the tracks that have to be crossed once the access arm is up to speed.
+  * Options: A) access time, B) rotational delay, C) seek time, D) Transfer time
+  * **Answer: [C] seek time** | *Logic: Seek time consists of initial acceleration and arm traversal.*
+* **Q286:** On a movable head system, the time it takes to position the head at the track is known as:
+  * Options: A) seek time, B) rotational delay, C) access time, D) Transfer time
+  * **Answer: [A] seek time** | *Logic: Positioning the arm over the designated track = Seek Time.*
+* **Q287:** The time disk controller takes for the beginning of the sector to reach the head is known as:
+  * Options: A) seek time, B) rotational delay, C) access time, D) Transfer time
+  * **Answer: [B] rotational delay** | *Logic: Platter rotation until the target sector passes under the head = Rotational delay.*
+* **Q288:** The set of tracks that are at one arm position make up a:
+  * Options: A) magnetic disks, B) cylinders, C) assemblies, D) electrical disks
+  * **Answer: [B] cylinders** | *Logic: Tracks across all platters at the same radius form a cylinder.*
+* **Q289:** In ______ policy, when the last track has been visited in one direction, the arm is returned to the opposite end of the disk and the scan begins again.
+  * Options: A) Last in first out, B) Shortest service time first, C) SCAN, D) Circular SCAN
+  * **Answer: [D] Circular SCAN** | *Logic: C-SCAN wraps around directly to the opposite end and continues in the same direction.*
+
+---
+
+### Unit 9: Security and Protection Mechanism (15 MCQs)
+
+* **Q307:** Which of the following is a strong password?
+  * Options: A) P@ssw0rd, B) !augustdelhi, C) 19thAugust88, D) Delhi88
+  * **Answer: [A] P@ssw0rd** | *Logic: Combines uppercase, lowercase, numbers, and special characters.*
+* **Q308:** ______ in an operating system refers to the mechanisms implemented by the operating system to ensure the security and integrity of the system.
+  * Options: A) System protection, B) Access control, C) Encryption, D) Firewall
+  * **Answer: [A] System protection** | *Logic: System protection enforces internal security and resource boundaries.*
+* **Q309:** ______ is a software program that monitors and controls incoming and outgoing network traffic based on predefined security rules.
+  * Options: A) Antivirus software, B) Firewall, C) System protection, D) System updates
+  * **Answer: [B] Firewall** | *Logic: Firewalls filter packet traffic based on port and IP rules.*
+* **Q310:** ______ is used to protect the system from malware, and other malicious software.
+  * Options: A) Antivirus software, B) Firewall, C) System protection, D) System updates
+  * **Answer: [A] Antivirus software** | *Logic: Antivirus scans and neutralizes malicious executables and malware.*
+* **Q311:** ______ keeps the operating system up-to-date with the latest security patches to prevent known vulnerabilities from being exploited.
+  * Options: A) System updates, B) Antivirus software, C) Firewall, D) System protection
+  * **Answer: [A] System updates** | *Logic: Regular OS updates patch security flaws and zero-day exploits.*
+* **Q312:** ______ gives the system access only to authorized users and tackles the system's external threats.
+  * Options: A) Security, B) System protection, C) System updates, D) Antivirus software
+  * **Answer: [A] Security** | *Logic: Security guards against external threats; protection handles internal access rights.*
+* **Q313:** ______ deals with who has access to the system resources and tackles the system's internal threats.
+  * Options: A) Protection, B) System updates, C) Antivirus software, D) Security
+  * **Answer: [A] Protection** | *Logic: Protection governs internal resource permissions and domain controls.*
+* **Q314:** ______ is a form of malware that downloads on a computer by impersonating a trustworthy program and can get unauthorized access to a system's login information.
+  * Options: A) Worm, B) Trojan Horse, C) Trap door, D) Virus
+  * **Answer: [B] Trojan Horse** | *Logic: Masquerades as legitimate software to deceive users.*
+* **Q315:** ______ is a sort of malware whose main purpose is to keep operating on infected systems while self-replicating and infecting other computers.
+  * Options: A) Worm, B) Trojan Horse, C) Trap door, D) Virus
+  * **Answer: [A] Worm** | *Logic: Standalone self-replicating network entity.*
+* **Q316:** ______ has the ability to produce duplicate copies that occupy all available resources and prevent any other processes from using them.
+  * Options: A) Worm, B) Trojan Horse, C) Trap door, D) Virus
+  * **Answer: [A] Worm** | *Logic: Worm proliferation exhausts network bandwidth and system RAM.*
+* **Q317:** ______ aims to shut down a computer system or network so that its intended users are unable to access it and prevent authorized users from accessing a system.
+  * Options: A) Worm, B) Trojan Horse, C) Trap door, D) Denial of Service
+  * **Answer: [D] Denial of Service** | *Logic: DoS floods servers with requests to deny service to valid users.*
+* **Q318:** Which mechanism is implemented in protection to control access to system resources?
+  * Options: A) Encryption, B) Certification, C) Authorization, D) none
+  * **Answer: [C] Authorization** | *Logic: Authorization verifies whether a subject holds rights to access an object.*
+* **Q319:** Netbus, Subseven, Y3K Remote Administration Tool are types of:
+  * Options: A) Worm, B) Trojan Horse, C) Trap door, D) Denial of Service
+  * **Answer: [B] Trojan Horse** | *Logic: Remote Administration Tools (RATs) are classic Trojan horses.*
+* **Q320:** Robert Morris is an example of:
+  * Options: A) Internet Worm, B) Trojan Horse, C) Trap door, D) Virus
+  * **Answer: [A] Internet Worm** | *Logic: The Morris Worm (1988) was the first recognized Internet worm.*
+* **Q321:** Back Orifice, Beast, Zeus, The Blackhole Exploit Kit are example of:
+  * Options: A) Worm, B) Trojan Horse, C) Trap door, D) Denial of Service
+  * **Answer: [B] Trojan Horse** | *Logic: Widely known Trojan rootkit and exploit packages.*
+
+---
+
+### Unit 10: Unix / Linux Operating System (15 MCQs)
+
+* **Q328:** Which of the following is a Unix command to list all files in a directory?
+  * Options: A) list, B) ls, C) dir, D) show
+  * **Answer: [B] ls** | *Logic: `ls` lists directory contents.*
+* **Q329:** What is the purpose of the chmod command in Unix?
+  * Options: A) Change file content, B) Change file owner, C) Change file permissions, D) Change file name
+  * **Answer: [C] Change file permissions** | *Logic: `chmod` modifies read/write/execute permissions.*
+* **Q330:** How do you delete a directory and its contents in Unix/Linux?
+  * Options: A) del, B) remove -f, C) deleteall, D) rm -r
+  * **Answer: [D] rm -r** | *Logic: `rm -r` (or `-rf`) deletes directories recursively.*
+* **Q331:** What is the Unix command to display the present working directory?
+  * Options: A) pwd, B) where, C) home, D) presentdir
+  * **Answer: [A] pwd** | *Logic: `pwd` = Print Working Directory.*
+* **Q332:** What is the core of the Unix operating system?
+  * Options: A) Shell, B) Kernel, C) Command, D) Script
+  * **Answer: [B] Kernel** | *Logic: The Kernel is the low-level central core managing hardware resources.*
+* **Q333:** What does the grep command do?
+  * Options: A) Searches for a string in a file, B) Deletes a file, C) Saves a file, D) Moves a file
+  * **Answer: [A] Searches for a string in a file** | *Logic: `grep` searches for text patterns matching regular expressions.*
+* **Q334:** How do you search for a manual page in Unix/Linux?
+  * Options: A) info, B) help, C) man, D) guide
+  * **Answer: [C] man** | *Logic: `man <command>` opens the manual page.*
+* **Q335:** Which command is used to display the content of a file in Unix?
+  * Options: A) show, B) cat, C) disp, D) display
+  * **Answer: [B] cat** | *Logic: `cat` concatenates and prints file contents to standard output.*
+* **Q336:** Which of the following is the symbol for piping in Unix/Linux?
+  * Options: A) %, B) *, C) #, D) |
+  * **Answer: [D] |** | *Logic: Vertical bar `|` routes output of one command as input to another.*
+* **Q337:** What does the ps command do in Unix/Linux?
+  * Options: A) Displays file permissions, B) Displays process status, C) Displays current users, D) Displays system information
+  * **Answer: [B] Displays process status** | *Logic: `ps` prints information about active processes.*
+* **Q338:** Which of the following is a process control command in Unix/Linux?
+  * Options: A) kill, B) ctrlp, C) stopproc, D) ps
+  * **Answer: [A] kill** | *Logic: `kill` sends process signals (e.g., `SIGKILL`, `SIGTERM`) to control processes.*
+* **Q339:** What command is used to change file ownership in Unix/Linux?
+  * Options: A) chmod, B) chown, C) change, D) ownfile
+  * **Answer: [B] chown** | *Logic: `chown` = Change Owner.*
+* **Q340:** What command is used to copy files in Unix/Linux?
+  * Options: A) copy, B) cop, C) cp, D) duplicate
+  * **Answer: [C] cp** | *Logic: `cp` is the standard file copy command.*
+* **Q341:** What does the df command display?
+  * Options: A) File size, B) Disk space usage, C) Memory usage, D) CPU usage
+  * **Answer: [B] Disk space usage** | *Logic: `df` = Disk Free; displays file system usage.*
+* **Q342:** Which of the following file types does Unix/Linux not recognize?
+  * Options: A) Regular file, B) Directory file, C) Symbolic link file, D) Executable file
+  * **Answer: [D] Executable file** | *Logic: Executable is a permission flag (`+x`), not an internal Unix file type (Unix recognises regular, directory, symlink, char/block device, FIFO, socket).*
+
+---
+
+## 🧮 ALL NUMERICALS & CHEAT CODES
+
+### 1. Memory Partition Allocation (Unit 6)
+* **First-Fit:** Searches sequentially from beginning; allocates the first block $\ge$ request.
+* **Best-Fit:** Searches entire memory; allocates the smallest block $\ge$ request. Leaves smallest leftover hole.
+* **Worst-Fit:** Searches entire memory; allocates the largest available block.
+* **Next-Fit:** Searches like First-Fit, but resumes scanning from the location of the *last allocated block*.
+* **Standard Exam Problem (PB Q219/Q220):**
+  * Partitions: `100K, 500K, 200K, 300K, 600K`
+  * Processes: `212K, 417K, 112K, 426K`
+  * **Best-Fit** is the ONLY algorithm that accommodates all 4 processes! First-Fit, Worst-Fit, and Next-Fit all fail to allocate $426\text{K}$.
+
+### 2. Paging with TLB & Effective Memory Access Time (Unit 6)
+* **Without TLB lookup overhead:**
+  $$\text{EMAT} = \alpha \cdot t_{\text{mem}} + (1 - \alpha) \cdot (t_{\text{pt}} + t_{\text{mem}})$$
+* **With TLB lookup overhead ($t_{\text{tlb}}$):**
+  $$\text{EMAT} = \alpha \cdot (t_{\text{tlb}} + t_{\text{mem}}) + (1 - \alpha) \cdot (t_{\text{tlb}} + t_{\text{pt}} + t_{\text{mem}})$$
+* **Quick Exam Solutions:**
+  * PB Q223: $\alpha=0.75, t_{\text{mem}}=100, t_{\text{pt}}=100 \implies \mathbf{125\text{ ns}}$
+  * PB Q224: $\alpha=0.85, t_{\text{mem}}=100, t_{\text{pt}}=50 \implies \mathbf{107.5\text{ ns}}$
+  * PB Q227: $\alpha=0.75, t_{\text{mem}}=100, t_{\text{pt}}=100, t_{\text{tlb}}=20 \implies \mathbf{145\text{ ns}}$
+
+### 3. Page Replacement Algorithms (Unit 7)
+* **FIFO:** Replace oldest loaded page in frame. (Susceptible to Belady's Anomaly).
+* **LRU:** Look left (into the past); replace page not referenced for longest time.
+* **Optimal (OPT):** Look right (into the future); replace page not needed for longest time.
+* **NRU (4 Classes):**
+  * Class 0: $R=0, M=0$
+  * Class 1: $R=0, M=1$
+  * Class 2: $R=1, M=0$
+  * Class 3: $R=1, M=1$
+  * Replaces random page from the lowest non-empty class.
+* **Second Chance (Clock):** Inspect FIFO pointer with bit $R$. If $R=1$, clear to $0$ and advance; if $R=0$, evict.
+
+### 4. Disk Arm Scheduling (Unit 8)
+* **Total Head Movement (THM):** Sum of absolute cylinder steps $\sum |C_{\text{curr}} - C_{\text{next}}|$.
+* **5000-Cylinder Problem (Notes Pg 16–19 & PB Q305):** Head at 143, moving down towards 0:
+  * **FCFS:** $7081\text{ cyl}$
+  * **SSTF:** $\mathbf{1745\text{ cyl}}$ (Optimal)
+  * **SCAN:** $1917\text{ cyl}$ (Touches boundary 0)
+  * **LOOK:** $1745\text{ cyl}$ (Reverses at lowest request 86)
+  * **C-SCAN:** $9228\text{ cyl}$
+  * **C-LOOK:** $2606\text{ cyl}$
+
+---
+
+## 📚 CORE HIGH-YIELD THEORY (CH 6 TO 10)
+
+1. **Fragmentation & Compaction (Ch 6):**
+   * *Internal Fragmentation:* Wasted memory within an allocated partition (Fixed partitioning & Paging).
+   * *External Fragmentation:* Total free space exists, but scattered in non-contiguous fragments (Variable partitioning & Segmentation).
+   * *Compaction:* Shuffling memory to group free space into a contiguous hole.
+2. **Paging vs Segmentation (Ch 6):**
+   * *Paging:* Divides memory into fixed-size physical frames and pages. Transparent to user. Internal fragmentation only.
+   * *Segmentation:* Divides memory into variable-sized logical segments (Code, Stack, Data) representing the programmer's view. External fragmentation only.
+3. **Page Fault & Thrashing (Ch 7):**
+   * *Page Fault:* Hardware trap triggered when a process requests a page not currently resident in RAM.
+   * *Thrashing:* State where the system spends more time swapping pages in/out than executing user instructions due to overcommitting multiprogramming beyond working set limits.
+4. **Disk Latencies & DMA (Ch 8):**
+   * *Seek Time:* Arm travel time to track.
+   * *Rotational Delay:* Platter spin time to sector.
+   * *Direct Memory Access (DMA):* Dedicated controller moving blocks directly between I/O and RAM with zero CPU intervention during transfer.
+5. **The 8 Design Principles of Security (Ch 9):**
+   * Least Privilege, Fail-Safe Defaults, Economy of Mechanism, Complete Mediation, Open Design, Separation of Privilege, Least Common Mechanism, User Acceptability.
+6. **Access Matrix vs ACL vs C-List (Ch 9):**
+   * *ACL (Column-slice):* Attached to Object/File. Easy to revoke access for specific files.
+   * *Capability List (Row-slice):* Attached to Subject/Process. Fast access checks.
+7. **Linux Kernel Subsystems (Ch 10):**
+   * System Call Interface $\to$ Process Management Subsystem, Memory Management Subsystem, I/O Subsystem (VFS, Character/Block drivers).
