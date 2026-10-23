@@ -1,0 +1,2642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OS T2 Exam Master Preparation | Units 6 to 10</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --card-bg: #0c0d12;
+      --card-border: #1e2230;
+      --card-hover: #161922;
+      --text-main: #ededed;
+      --text-muted: #8890a4;
+      --accent-blue: #0070f3;
+      --accent-cyan: #00dfd8;
+      --accent-green: #10b981;
+      --accent-red: #f43f5e;
+      --accent-amber: #f59e0b;
+      --accent-purple: #a855f7;
+      --code-bg: #07080b;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Geist", Helvetica, Arial, sans-serif;
+      --font-mono: "Fira Code", "JetBrains Mono", Consolas, "SF Mono", monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #050608;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232736;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #363d52;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Top Sticky Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 0;
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, #8890a4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-badge {
+      background: rgba(0, 112, 243, 0.15);
+      border: 1px solid rgba(0, 112, 243, 0.35);
+      color: var(--accent-cyan);
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      font-weight: 500;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      color: #fff;
+      background: #141721;
+      border-color: var(--card-border);
+    }
+    .nav-btn.active {
+      border-color: var(--accent-blue);
+      color: #fff;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 40px 0 24px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 32px;
+    }
+    .hero-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+    .hero-title span {
+      background: linear-gradient(90deg, #0070f3, #00dfd8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 850px;
+      margin-bottom: 24px;
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    }
+    .stat-card.u6 { border-top: 2px solid #0070f3; }
+    .stat-card.u7 { border-top: 2px solid #00dfd8; }
+    .stat-card.u8 { border-top: 2px solid #a855f7; }
+    .stat-card.u9 { border-top: 2px solid #f59e0b; }
+    .stat-card.u10 { border-top: 2px solid #10b981; }
+
+    .stat-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+    .stat-val {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .stat-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* Strategy Banner */
+    .strategy-banner {
+      background: linear-gradient(135deg, rgba(0, 112, 243, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%);
+      border: 1px solid rgba(0, 112, 243, 0.25);
+      border-radius: 8px;
+      padding: 18px 24px;
+      margin-bottom: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .strat-text h4 {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .strat-text p {
+      font-size: 0.88rem;
+      color: #b3bdd2;
+    }
+    .strat-pill-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .strat-pill {
+      background: #0d121c;
+      border: 1px solid #22304d;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .strat-pill b {
+      color: var(--accent-cyan);
+    }
+
+    /* Section Headings */
+    .section-header {
+      margin: 40px 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-tag {
+      font-size: 0.75rem;
+      background: #141721;
+      border: 1px solid #282f44;
+      padding: 2px 8px;
+      border-radius: 4px;
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 24px;
+      transition: border-color 0.2s ease;
+    }
+    .card:hover {
+      border-color: #2b3247;
+    }
+
+    /* Numerical Box */
+    .num-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .num-badge {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .badge-u6 { background: rgba(0, 112, 243, 0.2); color: #60a5fa; border: 1px solid rgba(0, 112, 243, 0.4); }
+    .badge-u7 { background: rgba(0, 223, 216, 0.2); color: #2dd4bf; border: 1px solid rgba(0, 223, 216, 0.4); }
+    .badge-u8 { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+    .problem-box {
+      background: #08090d;
+      border-left: 3px solid var(--accent-blue);
+      padding: 14px 18px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.92rem;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+    .problem-box b {
+      color: #fff;
+    }
+
+    .solution-box {
+      margin-top: 14px;
+    }
+    .step-heading {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      margin: 14px 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Memory visual diagram */
+    .memory-blocks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 12px 0;
+    }
+    .mem-block {
+      background: #11141d;
+      border: 1px solid #232a3d;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      min-width: 140px;
+      text-align: center;
+    }
+    .mem-block.allocated {
+      border-color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.08);
+    }
+    .mem-block.free {
+      border-color: #3b4257;
+      background: #0d0f17;
+    }
+    .mem-block .b-title {
+      font-weight: 700;
+      color: #fff;
+    }
+    .mem-block .b-info {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .mem-block .b-frag {
+      font-size: 0.75rem;
+      color: var(--accent-amber);
+      margin-top: 2px;
+    }
+
+    /* Tables */
+    .table-container {
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.86rem;
+    }
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--card-border);
+    }
+    th {
+      background: #0d0f17;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.5px;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hit {
+      color: var(--accent-green);
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+    .miss, .fault {
+      color: var(--accent-red);
+      font-weight: 700;
+      background: rgba(244, 63, 94, 0.12);
+      padding: 2px 6px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Math formula card */
+    .formula-card {
+      background: #080a10;
+      border: 1px solid #1a2236;
+      border-radius: 6px;
+      padding: 12px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: #38bdf8;
+      margin: 10px 0;
+      display: inline-block;
+    }
+
+    /* Track Path diagram */
+    .track-seq {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 12px 0;
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+    }
+    .track-node {
+      background: #141724;
+      border: 1px solid #2b334d;
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: #fff;
+    }
+    .track-node.start {
+      border-color: var(--accent-cyan);
+      background: rgba(0, 223, 216, 0.12);
+      color: var(--accent-cyan);
+      font-weight: 700;
+    }
+    .track-arrow {
+      color: var(--text-muted);
+    }
+
+    /* MCQ Grid */
+    .mcq-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+    .filter-btn {
+      background: #0e111a;
+      border: 1px solid #22293d;
+      color: #8f9cb5;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      color: #fff;
+      border-color: var(--accent-blue);
+      background: #151b2b;
+    }
+    .toggle-answers-btn {
+      margin-left: auto;
+      background: #171b26;
+      border: 1px solid #2f384f;
+      color: #38bdf8;
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .toggle-answers-btn:hover {
+      background: #1e2433;
+    }
+
+    .mcq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+      transition: border-color 0.15s;
+    }
+    .mcq-item:hover {
+      border-color: #2b3247;
+    }
+    .mcq-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .mcq-q {
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: #fff;
+    }
+    .mcq-num {
+      color: var(--accent-cyan);
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .mcq-unit-tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #111420;
+      border: 1px solid #23283a;
+      color: var(--text-muted);
+      height: fit-content;
+      white-space: nowrap;
+    }
+
+    .mcq-opts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 8px;
+      margin: 10px 0;
+    }
+    .opt-box {
+      background: #08090e;
+      border: 1px solid #1a1e2b;
+      padding: 8px 12px;
+      border-radius: 5px;
+      font-size: 0.84rem;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .opt-letter {
+      background: #151824;
+      color: #cbd5e1;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .opt-box.correct {
+      border-color: var(--accent-green);
+      background: rgba(16, 185, 129, 0.08);
+      color: #e2e8f0;
+      font-weight: 600;
+    }
+    .opt-box.correct .opt-letter {
+      background: var(--accent-green);
+      color: #000;
+    }
+
+    .mcq-expl {
+      background: #0a0d14;
+      border-left: 2px solid var(--accent-cyan);
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      color: #8da2c0;
+      margin-top: 8px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* Theory Cards */
+    .theory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 16px;
+    }
+    .theory-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+    .theory-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .theory-unit {
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #141724;
+      color: var(--accent-cyan);
+    }
+    .theory-list {
+      list-style-type: none;
+      margin-top: 8px;
+      font-size: 0.88rem;
+      color: #cbd5e1;
+    }
+    .theory-list li {
+      position: relative;
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+    .theory-list li::before {
+      content: "•";
+      color: var(--accent-blue);
+      position: absolute;
+      left: 0;
+      font-size: 1.2rem;
+      top: -2px;
+    }
+    .theory-list b {
+      color: #fff;
+    }
+
+    /* Shell Script Box */
+    .script-block {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .script-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .script-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .copy-btn {
+      background: #111420;
+      border: 1px solid #272e42;
+      color: #94a3b8;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .copy-btn:hover {
+      color: #fff;
+      border-color: var(--accent-cyan);
+    }
+    pre {
+      background: var(--code-bg);
+      border: 1px solid #181b24;
+      border-radius: 6px;
+      padding: 14px;
+      overflow-x: auto;
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+    .comment { color: #5a647d; }
+    .keyword { color: #f43f5e; font-weight: 600; }
+    .string { color: #10b981; }
+    .command { color: #38bdf8; }
+    .var { color: #f59e0b; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 0 20px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--card-border);
+      margin-top: 60px;
+    }
+
+    /* Print Styles */
+    @media print {
+      .navbar, .mcq-filter-bar, .copy-btn, .toggle-answers-btn {
+        display: none !important;
+      }
+      body {
+        background: #fff;
+        color: #000;
+      }
+      .card, .theory-card, .mcq-item, .stat-card {
+        border-color: #ccc;
+        background: #fff;
+        color: #000;
+        page-break-inside: avoid;
+      }
+      .opt-box.correct {
+        background: #eee;
+        color: #000;
+        font-weight: bold;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span>OS EXAM COMPACT</span>
+        <span class="logo-badge">T2 · Units 6–10</span>
+      </div>
+      <div class="nav-links">
+        <a href="#strategy" class="nav-btn active">Strategy</a>
+        <a href="#numericals" class="nav-btn">Numericals (15M)</a>
+        <a href="#mcqs" class="nav-btn">All MCQs (25M)</a>
+        <a href="#theory" class="nav-btn">Short Theory (10M)</a>
+        <a href="#scripts" class="nav-btn">Shell Scripts</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <!-- Hero Section -->
+    <header class="hero" id="strategy">
+      <h1 class="hero-title">Operating Systems <span>T2 Master Prep</span></h1>
+      <p class="hero-desc">
+        Engineered specifically for your 50-mark exam tomorrow covering Chapters 6 through 10. Designed for maximum return on investment: lock 15/15 in Numericals, 20+ in MCQs, and 5–8 marks in core theory to easily hit <b>38–43+ marks</b> with zero overload.
+      </p>
+
+      <!-- Weightage Grid -->
+      <div class="stats-grid">
+        <div class="stat-card u6">
+          <div class="stat-label">Unit 6 (15%)</div>
+          <div class="stat-val">15 Marks</div>
+          <div class="stat-sub">Memory Policies & TLB</div>
+        </div>
+        <div class="stat-card u7">
+          <div class="stat-label">Unit 7 (10%)</div>
+          <div class="stat-val">10 Marks</div>
+          <div class="stat-sub">Virtual Memory & Paging</div>
+        </div>
+        <div class="stat-card u8">
+          <div class="stat-label">Unit 8 (8%)</div>
+          <div class="stat-val">8 Marks</div>
+          <div class="stat-sub">Disk Scheduling & I/O</div>
+        </div>
+        <div class="stat-card u9">
+          <div class="stat-label">Unit 9 (5%)</div>
+          <div class="stat-val">5 Marks</div>
+          <div class="stat-sub">Security & Malware</div>
+        </div>
+        <div class="stat-card u10">
+          <div class="stat-label">Unit 10 (12%)</div>
+          <div class="stat-val">12 Marks</div>
+          <div class="stat-sub">Unix / Linux & Shell</div>
+        </div>
+      </div>
+
+      <!-- Action Plan -->
+      <div class="strategy-banner">
+        <div class="strat-text">
+          <h4>🎯 The 35–40 Marks Blueprint (Minimal Effort Formula)</h4>
+          <p>You do not need 100% of the syllabus to score an outstanding grade. Focus strictly on:</p>
+        </div>
+        <div class="strat-pill-group">
+          <div class="strat-pill"><b>Pillar 1:</b> 15/15 Marks from 3 Standard Numericals</div>
+          <div class="strat-pill"><b>Pillar 2:</b> 18–22 Marks from the ~75 Question Bank MCQs</div>
+          <div class="strat-pill"><b>Pillar 3:</b> 5–8 Marks from 5 simple theory points + 1 script</div>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ======================================================== -->
+    <!-- SECTION 1: MASTER NUMERICALS (15 MARKS)                  -->
+    <!-- ======================================================== -->
+    <section id="numericals">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Part 1: Master Numericals Walkthrough</span>
+          <span class="section-tag">Guaranteed 15 Marks</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Every numerical type present in your practice book solved step-by-step
+        </div>
+      </div>
+
+      <!-- TYPE 1: CONTIGUOUS ALLOCATION -->
+      <div class="card">
+        <div class="num-title">
+          <span>Type 1: Contiguous Memory Allocation (First-Fit, Best-Fit, Worst-Fit)</span>
+          <span class="num-badge badge-u6">Unit 6</span>
+        </div>
+
+        <div class="problem-box">
+          <b>Practice Book Question (Q219, Q220, Q228):</b><br>
+          Given 5 memory partitions in order: <code>100K, 500K, 200K, 300K, 600K</code>.<br>
+          How would <b>First-Fit</b>, <b>Best-Fit</b>, and <b>Worst-Fit</b> place the incoming processes: <code>212K, 417K, 112K, 426K</code> (in order)? Which algorithm makes the most efficient use of memory?
+        </div>
+
+        <div class="solution-box">
+          <div class="step-heading">1. First-Fit Allocation (Allocate the FIRST hole big enough)</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Process</th>
+                  <th>Partition Chosen</th>
+                  <th>Remaining Free Space in Partition</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>P1 (212K)</b></td>
+                  <td>500K (First hole ≥ 212K; 100K is skipped)</td>
+                  <td>500K - 212K = <b>288K left</b></td>
+                  <td><span class="hit">Allocated</span></td>
+                </tr>
+                <tr>
+                  <td><b>P2 (417K)</b></td>
+                  <td>600K (First hole ≥ 417K; 100K, 288K, 200K, 300K skipped)</td>
+                  <td>600K - 417K = <b>183K left</b></td>
+                  <td><span class="hit">Allocated</span></td>
+                </tr>
+                <tr>
+                  <td><b>P3 (112K)</b></td>
+                  <td>288K (First hole ≥ 112K; 100K is skipped, next hole is 288K)</td>
+                  <td>288K - 112K = <b>176K left</b></td>
+                  <td><span class="hit">Allocated</span></td>
+                </tr>
+                <tr>
+                  <td><b>P4 (426K)</b></td>
+                  <td>None! Available holes: 100K, 176K, 200K, 300K, 183K. Largest is 300K.</td>
+                  <td>Cannot fit 426K!</td>
+                  <td><span class="fault">Must Wait (Fails)</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="step-heading">2. Best-Fit Allocation (Allocate the SMALLEST hole big enough)</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Process</th>
+                  <th>Available Holes</th>
+                  <th>Best-Fit Partition Chosen</th>
+                  <th>Leftover</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>P1 (212K)</b></td>
+                  <td>100K, 500K, 200K, 300K, 600K</td>
+                  <td><b>300K</b> (Smallest hole ≥ 212K)</td>
+                  <td>300K - 212K = 88K</td>
+                </tr>
+                <tr>
+                  <td><b>P2 (417K)</b></td>
+                  <td>100K, 500K, 200K, 88K, 600K</td>
+                  <td><b>500K</b> (Smallest hole ≥ 417K)</td>
+                  <td>500K - 417K = 83K</td>
+                </tr>
+                <tr>
+                  <td><b>P3 (112K)</b></td>
+                  <td>100K, 83K, 200K, 88K, 600K</td>
+                  <td><b>200K</b> (Smallest hole ≥ 112K)</td>
+                  <td>200K - 112K = 88K</td>
+                </tr>
+                <tr>
+                  <td><b>P4 (426K)</b></td>
+                  <td>100K, 83K, 88K, 88K, 600K</td>
+                  <td><b>600K</b> (Smallest hole ≥ 426K)</td>
+                  <td>600K - 426K = 174K</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size: 0.88rem; color: var(--accent-green); margin-top: 6px;">
+            ✔ <b>Best-Fit Result:</b> ALL 4 processes are successfully allocated!
+          </p>
+
+          <div class="step-heading">3. Worst-Fit Allocation (Allocate the LARGEST hole available)</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 6px;">
+            P1 (212K) takes 600K (leaving 388K) &rarr; P2 (417K) takes 500K (leaving 83K) &rarr; P3 (112K) takes 388K (leaving 276K) &rarr; <b>P4 (426K) FAILS</b> because largest remaining hole is only 300K.
+          </p>
+
+          <div style="background: #0d121c; border: 1px solid #1f2d47; border-radius: 6px; padding: 12px; margin-top: 10px; font-size: 0.88rem;">
+            <b>Exam Conclusion:</b> <b>Best-Fit makes the most efficient use of memory</b> because it successfully places all 4 processes without leaving any process waiting. First-Fit and Worst-Fit both fail to allocate process P4 (426K).
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TYPE 2: EFFECTIVE MEMORY ACCESS TIME (EMAT) WITH TLB -->
+      <div class="card">
+        <div class="num-title">
+          <span>Type 2: Effective Memory Access Time (TLB Hit / Miss Math)</span>
+          <span class="num-badge badge-u6">Unit 6</span>
+        </div>
+
+        <div class="problem-box">
+          <b>Formulas to Memorize:</b><br>
+          <div class="formula-card">
+            Case A (TLB search ignored): EMAT = [ α × (t_mem) ] + [ (1 - α) × (t_page_table + t_mem) ]<br>
+            Case B (TLB search considered): EMAT = t_tlb + [ α × (t_mem) ] + [ (1 - α) × (t_page_table + t_mem) ]
+          </div>
+        </div>
+
+        <div class="solution-box">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px;">
+            <!-- Example 1 -->
+            <div style="background: #08090f; border: 1px solid var(--card-border); padding: 14px; border-radius: 6px;">
+              <h5 style="color: #fff; margin-bottom: 6px;">Q223: Ignore TLB Search Time</h5>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+                Hit ratio (α) = 75% = 0.75<br>
+                Memory reference (t_mem) = 100 ns<br>
+                Page table access (t_pt) = 100 ns
+              </p>
+              <div style="font-size: 0.85rem; line-height: 1.6;">
+                • TLB Hit (75%): 1 memory access = 100 ns<br>
+                • TLB Miss (25%): Page table (100) + Memory (100) = 200 ns<br>
+                <b>Calculation:</b><br>
+                <code>EMAT = 0.75 × 100 + 0.25 × 200</code><br>
+                <code>EMAT = 75 + 50 = <b style="color: var(--accent-cyan);">125 ns</b></code>
+              </div>
+            </div>
+
+            <!-- Example 2 -->
+            <div style="background: #08090f; border: 1px solid var(--card-border); padding: 14px; border-radius: 6px;">
+              <h5 style="color: #fff; margin-bottom: 6px;">Q224: Ignore TLB Search Time</h5>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+                Hit ratio (α) = 85% = 0.85<br>
+                Memory reference (t_mem) = 100 ns<br>
+                Page table access (t_pt) = 50 ns
+              </p>
+              <div style="font-size: 0.85rem; line-height: 1.6;">
+                • TLB Hit (85%): 1 memory access = 100 ns<br>
+                • TLB Miss (15%): Page table (50) + Memory (100) = 150 ns<br>
+                <b>Calculation:</b><br>
+                <code>EMAT = 0.85 × 100 + 0.15 × 150</code><br>
+                <code>EMAT = 85 + 22.5 = <b style="color: var(--accent-cyan);">107.5 ns</b></code>
+              </div>
+            </div>
+
+            <!-- Example 3 -->
+            <div style="background: #08090f; border: 1px solid var(--card-border); padding: 14px; border-radius: 6px;">
+              <h5 style="color: #fff; margin-bottom: 6px;">Q227: With 20ns TLB Search Time</h5>
+              <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 8px;">
+                Hit ratio (α) = 75% = 0.75, TLB time = 20 ns<br>
+                Memory reference = 100 ns, Page table = 100 ns
+              </p>
+              <div style="font-size: 0.85rem; line-height: 1.6;">
+                • TLB Hit (75%): 20 + 100 = 120 ns<br>
+                • TLB Miss (25%): 20 + 100 + 100 = 220 ns<br>
+                <b>Calculation:</b><br>
+                <code>EMAT = 0.75 × 120 + 0.25 × 220</code><br>
+                <code>EMAT = 90 + 55 = <b style="color: var(--accent-cyan);">145 ns</b></code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TYPE 3: PAGE REPLACEMENT (FIFO, LRU, OPTIMAL) -->
+      <div class="card">
+        <div class="num-title">
+          <span>Type 3: Page Replacement Algorithms (FIFO, LRU, OPTIMAL)</span>
+          <span class="num-badge badge-u7">Unit 7</span>
+        </div>
+
+        <div class="problem-box">
+          <b>Practice Book Master Question (Q267, Q268, Q273):</b><br>
+          Reference String: <code>7, 0, 1, 2, 0, 3, 0, 4, 2, 3</code> with <b>3 Page Frames</b> (initially empty).<br>
+          Calculate total page faults for <b>FIFO</b>, <b>LRU</b>, and <b>Optimal</b>.
+        </div>
+
+        <div class="solution-box">
+          <!-- FIFO Table -->
+          <div class="step-heading">1. FIFO (First-In, First-Out) &rarr; Oldest page loaded gets replaced first</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Page Ref</th>
+                  <th>7</th><th>0</th><th>1</th><th>2</th><th>0</th><th>3</th><th>0</th><th>4</th><th>2</th><th>3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Frame 1</b></td>
+                  <td>7</td><td>7</td><td>7</td><td>2</td><td>2</td><td>2</td><td>2</td><td>4</td><td>4</td><td>4</td>
+                </tr>
+                <tr>
+                  <td><b>Frame 2</b></td>
+                  <td>-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>3</td><td>3</td><td>3</td><td>2</td><td>2</td>
+                </tr>
+                <tr>
+                  <td><b>Frame 3</b></td>
+                  <td>-</td><td>-</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>3</td>
+                </tr>
+                <tr>
+                  <td><b>Result</b></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="hit">HIT</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 14px;">
+            FIFO Summary: Total Page References = 10 | <b>Total Page Faults = 9</b> | Hits = 1 (Hit Ratio = 10%).
+          </p>
+
+          <!-- LRU Table -->
+          <div class="step-heading">2. LRU (Least Recently Used) &rarr; Look BACKWARDS; replace the page unused for longest time</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Page Ref</th>
+                  <th>7</th><th>0</th><th>1</th><th>2</th><th>0</th><th>3</th><th>0</th><th>4</th><th>2</th><th>3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Frame 1</b></td>
+                  <td>7</td><td>7</td><td>7</td><td>2</td><td>2</td><td>2</td><td>2</td><td>4</td><td>4</td><td>3</td>
+                </tr>
+                <tr>
+                  <td><b>Frame 2</b></td>
+                  <td>-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                </tr>
+                <tr>
+                  <td><b>Frame 3</b></td>
+                  <td>-</td><td>-</td><td>1</td><td>1</td><td>1</td><td>3</td><td>3</td><td>3</td><td>2</td><td>2</td>
+                </tr>
+                <tr>
+                  <td><b>Result</b></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="hit">HIT</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="hit">HIT</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size: 0.85rem; color: #cbd5e1; margin-bottom: 14px;">
+            LRU Summary: Total Page References = 10 | <b>Total Page Faults = 8</b> | Hits = 2 (Hit Ratio = 20%).
+          </p>
+
+          <!-- OPT Table -->
+          <div class="step-heading">3. Optimal Page Replacement &rarr; Look FORWARD into future; replace page not needed for longest period</div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Page Ref</th>
+                  <th>7</th><th>0</th><th>1</th><th>2</th><th>0</th><th>3</th><th>0</th><th>4</th><th>2</th><th>3</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Frame 1</b></td>
+                  <td>7</td><td>7</td><td>7</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td>
+                </tr>
+                <tr>
+                  <td><b>Frame 2</b></td>
+                  <td>-</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td>
+                </tr>
+                <tr>
+                  <td><b>Frame 3</b></td>
+                  <td>-</td><td>-</td><td>1</td><td>1</td><td>1</td><td>3</td><td>3</td><td>4</td><td>4</td><td>3</td>
+                </tr>
+                <tr>
+                  <td><b>Result</b></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="hit">HIT</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="hit">HIT</span></td>
+                  <td><span class="fault">Fault</span></td>
+                  <td><span class="hit">HIT</span></td>
+                  <td><span class="hit">HIT</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--accent-green); margin-bottom: 14px;">
+            Optimal Summary: Total References = 10 | <b>Total Page Faults = 6</b> | Hits = 4 (Optimal yields minimum faults!).
+          </p>
+
+          <!-- Belady's Anomaly Box -->
+          <div style="background: rgba(245, 158, 11, 0.08); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 6px; padding: 14px; margin-top: 10px;">
+            <b style="color: var(--accent-amber);">⚡ Belady’s Anomaly (Q275, Q277):</b><br>
+            <span style="font-size: 0.86rem; color: #cbd5e1;">
+              Normally, allocating more frames reduces page faults. But in <b>FIFO</b>, for certain strings (e.g. <code>5, 4, 3, 2, 5, 4, 6, 5, 4, 3, 2, 6</code>):<br>
+              • With <b>3 frames</b> &rarr; Page Faults = <b>9</b><br>
+              • With <b>4 frames</b> &rarr; Page Faults = <b>10</b> (Faults INCREASE as frames increase!)<br>
+              <i>Note for exam: Belady's anomaly occurs in FIFO because it is NOT a stack algorithm. LRU and Optimal NEVER suffer from Belady's anomaly.</i>
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- TYPE 4: DISK SCHEDULING ALGORITHMS -->
+      <div class="card">
+        <div class="num-title">
+          <span>Type 4: Disk Scheduling Algorithms (FCFS, SSTF, SCAN, LOOK, C-SCAN, C-LOOK)</span>
+          <span class="num-badge badge-u8">Unit 8</span>
+        </div>
+
+        <div class="problem-box">
+          <b>Practice Book Question (Q303):</b><br>
+          Disk drive with 200 cylinders (0 to 199). Currently serving at cylinder <b>53</b>, and previous request was at <b>43</b> (Head is moving towards <b>higher/increasing</b> cylinders).<br>
+          Pending Request Queue (FIFO): <code>98, 183, 37, 122, 14, 124, 65, 67</code>.<br>
+          Calculate <b>Total Head Movement (THM in cylinders)</b> for all scheduling algorithms!
+        </div>
+
+        <div class="solution-box">
+          <!-- FCFS -->
+          <div class="step-heading">1. FCFS (First-Come, First-Served)</div>
+          <div class="track-seq">
+            <span class="track-node start">53</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">98</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">183</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">37</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">122</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">14</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">124</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">65</span>
+            <span class="track-arrow">&rarr;</span> <span class="track-node">67</span>
+          </div>
+          <div class="formula-card">
+            THM = |98-53| + |183-98| + |37-183| + |122-37| + |14-122| + |124-14| + |65-124| + |67-65|<br>
+            THM = 45 + 85 + 146 + 85 + 108 + 110 + 59 + 2 = <b>640 Cylinders</b>
+          </div>
+
+          <!-- SSTF -->
+          <div class="step-heading">2. SSTF (Shortest Seek Time First) &rarr; Always pick the closest pending track</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;">
+            From 53: Closest is 65 (|65-53|=12) &rarr; then 67 &rarr; 37 (|37-67|=30 vs |98-67|=31) &rarr; 14 &rarr; 98 &rarr; 122 &rarr; 124 &rarr; 183
+          </p>
+          <div class="track-seq">
+            <span class="track-node start">53</span> &rarr;
+            <span class="track-node">65</span> &rarr;
+            <span class="track-node">67</span> &rarr;
+            <span class="track-node">37</span> &rarr;
+            <span class="track-node">14</span> &rarr;
+            <span class="track-node">98</span> &rarr;
+            <span class="track-node">122</span> &rarr;
+            <span class="track-node">124</span> &rarr;
+            <span class="track-node">183</span>
+          </div>
+          <div class="formula-card">
+            THM = (67 - 53) + (67 - 14) + (183 - 14) = 14 + 53 + 169 = <b>236 Cylinders</b>
+          </div>
+
+          <!-- SCAN -->
+          <div class="step-heading">3. SCAN (Elevator Algorithm) &rarr; Goes UP to end boundary (199), then reverses</div>
+          <div class="track-seq">
+            <span class="track-node start">53</span> &rarr;
+            <span class="track-node">65</span> &rarr;
+            <span class="track-node">67</span> &rarr;
+            <span class="track-node">98</span> &rarr;
+            <span class="track-node">122</span> &rarr;
+            <span class="track-node">124</span> &rarr;
+            <span class="track-node">183</span> &rarr;
+            <span class="track-node" style="border-color: var(--accent-red);">199 (boundary)</span> &rarr;
+            <span class="track-node">37</span> &rarr;
+            <span class="track-node">14</span>
+          </div>
+          <div class="formula-card">
+            Shortcut: (199 - 53) + (199 - 14) = 146 + 185 = <b>331 Cylinders</b>
+          </div>
+
+          <!-- LOOK -->
+          <div class="step-heading">4. LOOK &rarr; Goes UP to last request (183, NOT 199), then reverses</div>
+          <div class="track-seq">
+            <span class="track-node start">53</span> &rarr;
+            <span class="track-node">65</span> &rarr;
+            <span class="track-node">67</span> &rarr;
+            <span class="track-node">98</span> &rarr;
+            <span class="track-node">122</span> &rarr;
+            <span class="track-node">124</span> &rarr;
+            <span class="track-node">183</span> &rarr;
+            <span class="track-node">37</span> &rarr;
+            <span class="track-node">14</span>
+          </div>
+          <div class="formula-card">
+            Shortcut: (183 - 53) + (183 - 14) = 130 + 169 = <b>299 Cylinders</b>
+          </div>
+
+          <!-- C-SCAN -->
+          <div class="step-heading">5. C-SCAN (Circular SCAN) &rarr; Goes to 199, jumps to track 0, scans up</div>
+          <div class="track-seq">
+            <span class="track-node start">53</span> &rarr;
+            <span class="track-node">...</span> &rarr;
+            <span class="track-node">183</span> &rarr;
+            <span class="track-node" style="border-color: var(--accent-red);">199</span> &rarr;
+            <span class="track-node" style="border-color: var(--accent-red);">0 (jump)</span> &rarr;
+            <span class="track-node">14</span> &rarr;
+            <span class="track-node">37</span>
+          </div>
+          <div class="formula-card">
+            THM = (199 - 53) + (199 - 0) + (37 - 0) = 146 + 199 + 37 = <b>382 Cylinders</b>
+          </div>
+
+          <!-- C-LOOK -->
+          <div class="step-heading">6. C-LOOK &rarr; Goes to last request 183, jumps directly to lowest request 14</div>
+          <div class="track-seq">
+            <span class="track-node start">53</span> &rarr;
+            <span class="track-node">...</span> &rarr;
+            <span class="track-node">183</span> &rarr;
+            <span class="track-node">14 (jump)</span> &rarr;
+            <span class="track-node">37</span>
+          </div>
+          <div class="formula-card">
+            THM = (183 - 53) + (183 - 14) + (37 - 14) = 130 + 169 + 23 = <b>322 Cylinders</b>
+          </div>
+
+          <!-- Summary Table -->
+          <div class="table-container" style="margin-top: 14px;">
+            <table>
+              <thead>
+                <tr>
+                  <th>Algorithm</th>
+                  <th>Total Head Movement (Cylinders)</th>
+                  <th>Key Exam Distinguisher</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><b>FCFS</b></td><td>640</td><td>Servicing strictly in arrival order (highest overhead)</td></tr>
+                <tr><td><b>SSTF</b></td><td><b>236 (Lowest)</b></td><td>Closest track next (risk of starvation for far tracks)</td></tr>
+                <tr><td><b>SCAN</b></td><td>331</td><td>Touches track 199 before reversing direction</td></tr>
+                <tr><td><b>LOOK</b></td><td>299</td><td>Reverses right at track 183 (avoids traveling to 199)</td></tr>
+                <tr><td><b>C-SCAN</b></td><td>382</td><td>Touches 199, jumps to 0, uniform wait time</td></tr>
+                <tr><td><b>C-LOOK</b></td><td>322</td><td>Reverses at 183, jumps directly to 14 (skips 199 and 0)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div style="background: #090a10; border-left: 3px solid var(--accent-purple); padding: 10px 14px; font-size: 0.85rem; margin-top: 10px; color: #cbd5e1;">
+            <b>Seek Time Calculation (e.g. Q302):</b> If exam says <i>"A seek takes 5 ms per cylinder"</i>, then:<br>
+            <code>Total Seek Time = Total Head Movement (THM) × Time per cylinder</code> &rarr; e.g. for SSTF: <code>236 × 5 ms = 1180 ms = 1.18 sec</code>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- SECTION 2: ALL MCQS FROM PRACTICE BOOK (25 MARKS)       -->
+    <!-- ======================================================== -->
+    <section id="mcqs">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Part 2: All Practice Book MCQs (Units 6 to 10)</span>
+          <span class="section-tag">25 Marks in Exam</span>
+        </div>
+        <button class="toggle-answers-btn" onclick="toggleAnswers()">Toggle Answers View</button>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="mcq-filter-bar">
+        <button class="filter-btn active" onclick="filterMCQ('all', this)">All Units (~75)</button>
+        <button class="filter-btn" onclick="filterMCQ('u6', this)">Unit 6 (Memory)</button>
+        <button class="filter-btn" onclick="filterMCQ('u7', this)">Unit 7 (Virtual Mem)</button>
+        <button class="filter-btn" onclick="filterMCQ('u8', this)">Unit 8 (Storage/IO)</button>
+        <button class="filter-btn" onclick="filterMCQ('u9', this)">Unit 9 (Security)</button>
+        <button class="filter-btn" onclick="filterMCQ('u10', this)">Unit 10 (Unix/Linux)</button>
+      </div>
+
+      <div id="mcq-container">
+
+        <!-- UNIT 6 MCQS -->
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q194</span>In memory management, Base register holds the _________ Address.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Smallest</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Largest</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Average</div>
+            <div class="opt-box"><span class="opt-letter">D</span>None of the mentioned</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Base register stores the smallest legal physical memory address of the process.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q195</span>The limit register specifies the _________.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Smallest Address</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Largest Address</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Size of the Range (Process Size)</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Process</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Limit register specifies the size (range) of the process address space.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q196</span>The way of binding of instruction and data to main memory address is/are:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Compile time</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Load time</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Execution time</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>All of the above</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Address binding can occur at 3 distinct stages: compile, load, or runtime.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q197</span>An address generated by CPU is known as _______ Address.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Physical</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Logical</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Scientific</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Specific</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> CPU always generates a logical (virtual) address.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q198</span>Logical address is also called ____________ Address.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Physical</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Scientific</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Virtual</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Specific</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Logical address and Virtual address are used synonymously.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q199</span>An address seen by the memory unit (loaded into MAR) is commonly referred to as _______ Address.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Physical</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Scientific</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Virtual</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Specific</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Hardware RAM chips only understand physical addresses.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q200</span>The event of copying process from main memory to hard disk is known as:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Roll in</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Roll out</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Rolling</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Roll back</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Out of RAM &rarr; Hard disk is Roll out (Swap out).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q201</span>The event of copying process from hard disk to main memory is known as:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Roll in</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Roll out</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Rolling</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Roll back</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Into RAM from disk is Roll in (Swap in).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q202</span>The set of all logical addresses generated by a program is a:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Physical Address Space</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Logical Address Space</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Scientific Address Space</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Specific Address Space</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> All logical addresses constitute the Logical Address Space.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q203</span>In an OS, ____________ is a device or location that stores data not currently in main memory.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>physical store</div>
+            <div class="opt-box"><span class="opt-letter">B</span>space store</div>
+            <div class="opt-box"><span class="opt-letter">C</span>address store</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>backing store</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Secondary disk space used for swapping is called the Backing Store.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q207</span>In memory management allocation algorithm used is/are:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>First Fit</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Best Fit</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Worst Fit</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>All of the mentioned</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> First Fit, Best Fit, and Worst Fit are the primary contiguous allocation algorithms.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q208</span>Which of the below factor considered the most in management of memory:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Efficient use of memory</div>
+            <div class="opt-box"><span class="opt-letter">B</span>speedy allocation of memory</div>
+            <div class="opt-box"><span class="opt-letter">C</span>speedy deallocation of memory</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>All of the mentioned</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Memory manager balances efficiency, fast allocation, and fast deallocation.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q209</span>_______________ a chunk of physical memory that is the same size as a system page.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>frame</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Pages</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Mode</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Space</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Golden Rule:</b> Physical memory = <b>Frames</b> | Logical memory = <b>Pages</b>.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q210</span>Virtual memory divided into small fixed size chunks of the same size is known as:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>frame</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Pages</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Mode</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Space</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Logical/virtual chunks = Pages.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q211</span>The number is used as an index into a page table is:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Index number</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Page number</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Page Offset</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Frame Offset</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Page table is indexed by Page Number (p) to find Frame Number (f).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q212 / Q231</span>To define physical memory address, frame number is combined with:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Index number</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Page number</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Page Offset (d)</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Frame Offset</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Formula:</b> Physical Address = (Frame Number f × Frame Size) + Offset (d).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q229</span>Logical memory is broken into blocks of the same size called:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>frames</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Backing Store</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Pages</div>
+            <div class="opt-box"><span class="opt-letter">D</span>None of these</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Same size blocks of logical memory are called Pages.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q230</span>The memory management scheme that permits physical address space to be non-contiguous is:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Framing</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Modelling</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Paging</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Allocating</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Key Concept:</b> Paging solves external fragmentation by allowing non-contiguous allocation.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q232</span>Each entry in TLB consists of:</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>a key (Tag / Page Number)</div>
+            <div class="opt-box"><span class="opt-letter">B</span>a value (Frame Number)</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Both A and B</div>
+            <div class="opt-box"><span class="opt-letter">D</span>None of these</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> TLB is an associative cache holding (Key = Page #, Value = Frame #).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u6">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q233</span>______________ is a memory administration approach that divides memory into multiple-sized segments.</div>
+            <span class="mcq-unit-tag">Unit 6</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Segmentation</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Paging</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Frame</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Offset</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Difference:</b> Paging uses fixed size blocks; Segmentation uses variable/multiple-sized blocks.</div>
+        </div>
+
+
+        <!-- UNIT 7 MCQS -->
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q240</span>What is the primary purpose of virtual memory?</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Increase physical memory</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Allow larger programs to run on limited physical memory</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Speed up memory access</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Reduce the size of applications</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Core Purpose:</b> Execute programs whose logical size exceeds physical RAM.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q244</span>_____ is the concept in which a process is copied into main memory from secondary memory according to the requirement.</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Paging</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Demand paging</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Segmentation</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Swapping</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Definition:</b> Demand paging loads pages ONLY when requested/demanded during execution.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q245 / Q257</span>When a program tries to access a page that is mapped in address space but not loaded in RAM:</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>segmentation fault occurs</div>
+            <div class="opt-box"><span class="opt-letter">B</span>fatal error occurs</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>page fault occurs</div>
+            <div class="opt-box"><span class="opt-letter">D</span>no error occurs</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Trap:</b> A page fault is an OS trap to fetch the missing page from disk into a free frame.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q246</span>Virtual memory is:</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>An extremely large main memory</div>
+            <div class="opt-box"><span class="opt-letter">B</span>An extremely large secondary memory</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>An illusion of extremely large main memory</div>
+            <div class="opt-box"><span class="opt-letter">D</span>A type of memory used in super computers</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Concept:</b> It creates an illusion to the programmer of a massive contiguous memory space.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q247</span>_________ is a high speed cache used to hold recently referenced page table entries.</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Translation Lookaside Buffer (TLB)</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Inverse page table</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Segmented page table</div>
+            <div class="opt-box"><span class="opt-letter">D</span>All the above</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Hardware:</b> TLB caches recent virtual-to-physical address mappings.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q250</span>Dirty bit is used to show:</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Page with corrupted data</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Wrong page in memory</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Page that is modified after being loaded into memory</div>
+            <div class="opt-box"><span class="opt-letter">D</span>page that is less frequently accessed</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> If dirty bit = 1, the page was modified and must be written back to disk before replacement.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q258 / Q262</span>What does thrashing refer to in the context of virtual memory?</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Inefficient disk usage</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Excessive page faults leading to constant swapping (spending more time paging than executing)</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Increasing physical memory</div>
+            <div class="opt-box"><span class="opt-letter">D</span>A method to optimize memory access</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Thrashing:</b> CPU utilization drops drastically because the system spends all its time paging.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q259</span>Effective access time is directly proportional to:</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>page-fault rate</div>
+            <div class="opt-box"><span class="opt-letter">B</span>hit ratio</div>
+            <div class="opt-box"><span class="opt-letter">C</span>memory access time</div>
+            <div class="opt-box"><span class="opt-letter">D</span>none of the mentioned</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Formula:</b> EAT = (1-p)×ma + p×(page fault overhead). Higher page fault rate = much higher access time!</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q260</span>In FIFO page replacement algorithm, when a page must be replaced:</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>oldest page is chosen</div>
+            <div class="opt-box"><span class="opt-letter">B</span>newest page is chosen</div>
+            <div class="opt-box"><span class="opt-letter">C</span>random page is chosen</div>
+            <div class="opt-box"><span class="opt-letter">D</span>none of the mentioned</div>
+          </div>
+          <div class="mcq-expl">💡 <b>FIFO rule:</b> First page brought in is the first one replaced.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q261</span>Which algorithm chooses the page that has not been used for the longest period of time?</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>first in first out algorithm</div>
+            <div class="opt-box"><span class="opt-letter">B</span>additional reference bit algorithm</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>least recently used (LRU) algorithm</div>
+            <div class="opt-box"><span class="opt-letter">D</span>counting based page replacement algorithm</div>
+          </div>
+          <div class="mcq-expl">💡 <b>LRU rule:</b> Replaces the page whose last reference occurred furthest in the past.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q263</span>Working set model for page replacement is based on the assumption of:</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>modularity</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>locality (Locality of reference)</div>
+            <div class="opt-box"><span class="opt-letter">C</span>globalization</div>
+            <div class="opt-box"><span class="opt-letter">D</span>random access</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Concept:</b> Programs execute within localized clusters of pages at any given time.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u7">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q265</span>What is the impact of thrashing?</div>
+            <span class="mcq-unit-tag">Unit 7</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>It improves system performance</div>
+            <div class="opt-box"><span class="opt-letter">B</span>It implies excessive page I/O</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>It decreases the degree of multiprogramming</div>
+            <div class="opt-box"><span class="opt-letter">D</span>It reduces page I/O</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Practice Book Key:</b> OS decreases the degree of multiprogramming to stop thrashing.</div>
+        </div>
+
+
+        <!-- UNIT 8 MCQS -->
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q282</span>The ______ keeps state information about the use of I/O components.</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>CPU</div>
+            <div class="opt-box"><span class="opt-letter">B</span>OS</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Kernel</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Shell</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> The Kernel I/O subsystem maintains state tables and device status.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q283</span>When hardware is accessed by reading and writing to specific memory locations, it is called:</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>port-mapped I/O</div>
+            <div class="opt-box"><span class="opt-letter">B</span>controller-mapped I/O</div>
+            <div class="opt-box"><span class="opt-letter">C</span>bus-mapped I/O</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>memory-mapped I/O</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Memory-Mapped I/O:</b> Device registers are mapped directly into CPU address space.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q284</span>The heads of the magnetic disk are attached to a ______ that moves all heads as a unit.</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>spindle</div>
+            <div class="opt-box"><span class="opt-letter">B</span>track</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>disk arm</div>
+            <div class="opt-box"><span class="opt-letter">D</span>pin</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Structure:</b> Read/write heads are fixed to the common disk arm assembly.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q285 / Q286</span>On a movable head system, the time it takes to position the head at the desired track is:</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>seek time</div>
+            <div class="opt-box"><span class="opt-letter">B</span>rotational delay</div>
+            <div class="opt-box"><span class="opt-letter">C</span>access time</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Transfer time</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Crucial Distinction:</b> Arm movement to track = <b>Seek Time</b>.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q287</span>The time disk controller takes for the beginning of the sector to reach the head is:</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>seek time</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>rotational delay (latency)</div>
+            <div class="opt-box"><span class="opt-letter">C</span>access time</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Transfer time</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Crucial Distinction:</b> Platter rotation to sector = <b>Rotational Latency</b>.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q288</span>The set of tracks that are at one arm position make up a:</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>magnetic disks</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>cylinders</div>
+            <div class="opt-box"><span class="opt-letter">C</span>assemblies</div>
+            <div class="opt-box"><span class="opt-letter">D</span>electrical disks</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Definition:</b> All tracks at the same radial arm position across platters form a Cylinder.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u8">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q289</span>In ______ policy, when the last track has been visited in one direction, arm returns to opposite end and scans again:</div>
+            <span class="mcq-unit-tag">Unit 8</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Last in first out</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Shortest service time first</div>
+            <div class="opt-box"><span class="opt-letter">C</span>SCAN</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>Circular SCAN (C-SCAN)</div>
+          </div>
+          <div class="mcq-expl">💡 <b>C-SCAN:</b> Only services requests in one direction; wraps around like a circle.</div>
+        </div>
+
+
+        <!-- UNIT 9 MCQS -->
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q307</span>Which of the following is a strong password?</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>P@ssw0rd</div>
+            <div class="opt-box"><span class="opt-letter">B</span>!augustdelhi</div>
+            <div class="opt-box"><span class="opt-letter">C</span>19thAugust88</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Delhi88</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Reason:</b> Contains uppercase, lowercase, numbers, and special characters.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q308</span>______ in an OS refers to mechanisms implemented to ensure security and integrity of the system:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>System protection</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Access control</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Encryption</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Firewall</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Protection:</b> Internal mechanism controlling access to system resources.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q309</span>______ is software that monitors and controls incoming and outgoing network traffic based on rules:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Antivirus software</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Firewall</div>
+            <div class="opt-box"><span class="opt-letter">C</span>System protection</div>
+            <div class="opt-box"><span class="opt-letter">D</span>System updates</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Definition:</b> A Firewall inspects and filters network traffic packets.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q310</span>______ is used to protect the system from malware and malicious software:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Antivirus software</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Firewall</div>
+            <div class="opt-box"><span class="opt-letter">C</span>System protection</div>
+            <div class="opt-box"><span class="opt-letter">D</span>System updates</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Definition:</b> Antivirus scans, detects, and removes malicious executable files.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q311</span>______ keeps the OS up to date with the latest security patches:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>System updates</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Antivirus software</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Firewall</div>
+            <div class="opt-box"><span class="opt-letter">D</span>System protection</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Patches:</b> System updates patch zero-day and known OS vulnerabilities.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q312</span>______ gives access only to authorized users and tackles external threats:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Security</div>
+            <div class="opt-box"><span class="opt-letter">B</span>System protection</div>
+            <div class="opt-box"><span class="opt-letter">C</span>System updates</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Antivirus software</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Memory Trick:</b> External threats = <b>Security</b> | Internal access = <b>Protection</b>.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q313</span>______ deals with who has access to system resources and tackles internal threats:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Protection</div>
+            <div class="opt-box"><span class="opt-letter">B</span>System updates</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Antivirus software</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Security</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Protection:</b> Internal authorization and access rights control.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q314</span>Malware that downloads by impersonating a trustworthy program to get unauthorized access:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Worm</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Trojan Horse</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Trap door</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Virus</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Trojan Horse:</b> Masquerades as a benign/useful application.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q315 / Q316</span>Malware whose main purpose is self-replicating and occupying all available resources:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Worm</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Trojan Horse</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Trap door</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Virus</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Worm:</b> Standalone self-replicating program; does not need a host file (unlike Virus).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q317</span>Aims to shut down a system or network so intended users are unable to access it:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Worm</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Trojan Horse</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Trap door</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>Denial of Service (DoS)</div>
+          </div>
+          <div class="mcq-expl">💡 <b>DoS:</b> Floods target system with requests, making service unavailable.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q318</span>Which mechanism is implemented in protection to control access to system resources?</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Encryption</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Certification</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Authorization</div>
+            <div class="opt-box"><span class="opt-letter">D</span>None</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Authorization:</b> Verifies what operations an authenticated entity is permitted to perform.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q319 / Q321</span>Netbus, Subseven, Back Orifice, Beast, Zeus are examples of:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Worm</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Trojan Horse (RAT - Remote Access Trojan)</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Trap door</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Denial of Service</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Exam Fact:</b> All these famous malware kits are Trojan Horses.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u9">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q320</span>Robert Morris is an example of:</div>
+            <span class="mcq-unit-tag">Unit 9</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Internet Worm</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Trojan Horse</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Trap door</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Virus</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Historical Fact:</b> The Morris Worm (1988) was the first recognized Internet worm.</div>
+        </div>
+
+
+        <!-- UNIT 10 MCQS -->
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q328</span>Which of the following is a Unix command to list all files in a directory?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>list</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>ls</div>
+            <div class="opt-box"><span class="opt-letter">C</span>dir</div>
+            <div class="opt-box"><span class="opt-letter">D</span>show</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Command:</b> <code>ls</code> lists directory contents.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q329</span>What is the purpose of the chmod command in Unix?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Change file content</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Change file owner</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>Change file permissions (modes)</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Change file name</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Memory Trick:</b> <b>ch</b>ange <b>mod</b>e = permissions (Read, Write, Execute).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q330</span>How do you delete a directory and its contents in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>del</div>
+            <div class="opt-box"><span class="opt-letter">B</span>remove -f</div>
+            <div class="opt-box"><span class="opt-letter">C</span>deleteall</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>rm -r</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Syntax:</b> <code>rm -r</code> recursively removes directories and their contents.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q331</span>What is the Unix command to display the present working directory?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>pwd</div>
+            <div class="opt-box"><span class="opt-letter">B</span>where</div>
+            <div class="opt-box"><span class="opt-letter">C</span>home</div>
+            <div class="opt-box"><span class="opt-letter">D</span>presentdir</div>
+          </div>
+          <div class="mcq-expl">💡 <b>pwd:</b> <b>P</b>resent <b>W</b>orking <b>D</b>irectory.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q332</span>What is the core of the Unix operating system?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Shell</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Kernel</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Command</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Script</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Structure:</b> Kernel is the central core interacting directly with hardware.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q333</span>What does the grep command do?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>Searches for a string (pattern) in a file</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Deletes a file</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Saves a file</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Moves a file</div>
+          </div>
+          <div class="mcq-expl">💡 <b>grep:</b> Global Regular Expression Print.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q334</span>How do you search for a manual page in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>info</div>
+            <div class="opt-box"><span class="opt-letter">B</span>help</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>man</div>
+            <div class="opt-box"><span class="opt-letter">D</span>guide</div>
+          </div>
+          <div class="mcq-expl">💡 <b>man:</b> <code>man &lt;command&gt;</code> displays user documentation manuals.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q335</span>Which command is used to display the content of a file in Unix?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>show</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>cat</div>
+            <div class="opt-box"><span class="opt-letter">C</span>disp</div>
+            <div class="opt-box"><span class="opt-letter">D</span>display</div>
+          </div>
+          <div class="mcq-expl">💡 <b>cat:</b> <b>cat</b>enate and display file contents to terminal.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q336</span>Which of the following is the symbol for piping in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>%</div>
+            <div class="opt-box"><span class="opt-letter">B</span>*</div>
+            <div class="opt-box"><span class="opt-letter">C</span>#</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>| (Vertical Bar)</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Pipe |:</b> Sends standard output of one command as input to another.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q337</span>What does the ps command do in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Displays file permissions</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Displays process status</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Displays current users</div>
+            <div class="opt-box"><span class="opt-letter">D</span>Displays system information</div>
+          </div>
+          <div class="mcq-expl">💡 <b>ps:</b> <b>P</b>rocess <b>S</b>tatus (PIDs, CPU time, TTY).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q338</span>Which of the following is a process control command in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box correct"><span class="opt-letter">A</span>kill</div>
+            <div class="opt-box"><span class="opt-letter">B</span>ctrlp</div>
+            <div class="opt-box"><span class="opt-letter">C</span>stopproc</div>
+            <div class="opt-box"><span class="opt-letter">D</span>ps</div>
+          </div>
+          <div class="mcq-expl">💡 <b>kill:</b> Sends signals (like SIGKILL / SIGTERM) to terminate a process.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q339</span>What command is used to change file ownership in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>chmod</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>chown</div>
+            <div class="opt-box"><span class="opt-letter">C</span>change</div>
+            <div class="opt-box"><span class="opt-letter">D</span>ownfile</div>
+          </div>
+          <div class="mcq-expl">💡 <b>chown:</b> <b>ch</b>ange <b>own</b>er. (chmod changes mode/permissions).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q340</span>What command is used to copy files in Unix/Linux?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>copy</div>
+            <div class="opt-box"><span class="opt-letter">B</span>cop</div>
+            <div class="opt-box correct"><span class="opt-letter">C</span>cp</div>
+            <div class="opt-box"><span class="opt-letter">D</span>duplicate</div>
+          </div>
+          <div class="mcq-expl">💡 <b>cp:</b> Standard copy command.</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q341</span>What does the df command display?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>File size</div>
+            <div class="opt-box correct"><span class="opt-letter">B</span>Disk space usage (Disk Free)</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Memory usage</div>
+            <div class="opt-box"><span class="opt-letter">D</span>CPU usage</div>
+          </div>
+          <div class="mcq-expl">💡 <b>df:</b> Reports file system disk space usage. (du reports directory file sizes).</div>
+        </div>
+
+        <div class="mcq-item" data-unit="u10">
+          <div class="mcq-head">
+            <div class="mcq-q"><span class="mcq-num">Q342</span>Which of the following file types does Unix/Linux NOT recognize as an intrinsic file type?</div>
+            <span class="mcq-unit-tag">Unit 10</span>
+          </div>
+          <div class="mcq-opts">
+            <div class="opt-box"><span class="opt-letter">A</span>Regular file</div>
+            <div class="opt-box"><span class="opt-letter">B</span>Directory file</div>
+            <div class="opt-box"><span class="opt-letter">C</span>Symbolic link file</div>
+            <div class="opt-box correct"><span class="opt-letter">D</span>Executable file</div>
+          </div>
+          <div class="mcq-expl">💡 <b>Exam Fact:</b> Unix recognizes regular files, directory files, links, devices, pipes; "Executable" is just a permission bit, not a separate file type!</div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- SECTION 3: SHORT HIGH-YIELD THEORY (10 MARKS)            -->
+    <!-- ======================================================== -->
+    <section id="theory">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Part 3: High-Yield Short Theory Points</span>
+          <span class="section-tag">Target: 5–8 Marks</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Exact Practice Book titles answered in simple, punchy exam-ready bullet points
+        </div>
+      </div>
+
+      <div class="theory-grid">
+
+        <!-- Q215: Fragmentation -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Internal vs External Fragmentation</span>
+            <span class="theory-unit">Unit 6 · Q215</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Internal Fragmentation:</b> Memory allocated to a process is slightly larger than requested. The unused portion inside the allocated partition is wasted (occurs in <b>fixed partitioning & paging</b>).</li>
+            <li><b>External Fragmentation:</b> Total free memory exists to satisfy a request, but it is broken into small non-contiguous holes scattered across RAM (occurs in <b>variable partitioning & segmentation</b>).</li>
+            <li><b>Solution:</b> <i>Compaction</i> solves external fragmentation. <i>Paging</i> completely eliminates external fragmentation by allowing pages to occupy non-contiguous frames.</li>
+          </ul>
+        </div>
+
+        <!-- Q204: Swapping -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Swapping in Memory Management</span>
+            <span class="theory-unit">Unit 6 · Q204</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Definition:</b> Temporarily moving an idle or blocked process from main memory (RAM) to a secondary backing store (Hard Disk) to free up RAM.</li>
+            <li><b>Roll Out / Swap Out:</b> Copying process from RAM to disk.</li>
+            <li><b>Roll In / Swap In:</b> Reloading process from disk into RAM when CPU is ready to execute it.</li>
+            <li><b>Significance:</b> Increases degree of multiprogramming and allows total process sizes to exceed physical memory limits.</li>
+          </ul>
+        </div>
+
+        <!-- Q236: Paging vs Segmentation -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Paging vs Segmentation</span>
+            <span class="theory-unit">Unit 6 · Q236</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Paging:</b> Non-contiguous scheme dividing memory into <b>fixed-size</b> blocks (Frames in RAM, Pages in process). Invisible to the programmer.</li>
+            <li><b>Segmentation:</b> Divides program into <b>variable-sized logical units</b> according to programmer's view (functions, stack, data, main).</li>
+            <li><b>Paging</b> suffers from internal fragmentation; <b>Segmentation</b> suffers from external fragmentation.</li>
+            <li>Paging uses a <i>Page Table</i> (page &rarr; frame); Segmentation uses a <i>Segment Table</i> (base & limit).</li>
+          </ul>
+        </div>
+
+        <!-- Q244 & 245: Demand Paging & Page Fault -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Demand Paging & Page Fault Handling</span>
+            <span class="theory-unit">Unit 7 · Q244/245</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Demand Paging:</b> Pages are brought into RAM <i>only when demanded</i> (referenced) during execution (Lazy Swapper).</li>
+            <li><b>Page Fault:</b> Hardware trap triggered when CPU references a page whose valid-invalid bit in the page table is set to <i>invalid</i> (not in RAM).</li>
+            <li><b>6-Step Handling:</b> (1) Trap to OS &rarr; (2) Save CPU state &rarr; (3) Check reference validity &rarr; (4) Find free physical frame &rarr; (5) Schedule disk I/O to read page &rarr; (6) Update page table valid bit & restart instruction.</li>
+          </ul>
+        </div>
+
+        <!-- Q258 & 266: Thrashing -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Thrashing: Causes and Mitigation</span>
+            <span class="theory-unit">Unit 7 · Q258/266</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Definition:</b> A pathological state where the OS spends more time swapping pages in and out than executing actual user instructions.</li>
+            <li><b>Primary Cause:</b> High degree of multiprogramming. When frames allocated to a process fall below its <i>working set</i>, page faults skyrocket &rarr; CPU utilization drops &rarr; OS mistakenly admits more processes &rarr; system collapses.</li>
+            <li><b>Mitigation:</b> (1) <b>Working Set Model:</b> Keep entire working set in RAM; (2) <b>Page Fault Frequency (PFF):</b> Suspend processes when page fault rate exceeds upper threshold.</li>
+          </ul>
+        </div>
+
+        <!-- Q285, 286, 287: Disk Terms -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Seek Time, Rotational Latency, & Access Time</span>
+            <span class="theory-unit">Unit 8 · Q285-287</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Seek Time:</b> Time taken by read/write head assembly to travel from current cylinder to target track cylinder.</li>
+            <li><b>Rotational Latency:</b> Time taken by target disk sector to rotate under the read/write head (avg = 1/2 of full revolution time).</li>
+            <li><b>Transfer Time:</b> Time required to physically transfer data bits to/from disk surface into memory.</li>
+            <li><b>Total Access Time:</b> <code>Seek Time + Rotational Latency + Transfer Time</code>.</li>
+          </ul>
+        </div>
+
+        <!-- Q296: DMA -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Direct Memory Access (DMA)</span>
+            <span class="theory-unit">Unit 8 · Q296</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Concept:</b> A dedicated hardware controller that transfers high-speed blocks of data directly between I/O device and main memory <b>without continuous CPU intervention</b>.</li>
+            <li><b>Working:</b> CPU initiates transfer by supplying starting address and byte count &rarr; DMA controller handles the block transfer &rarr; interrupts CPU once completed.</li>
+            <li><b>Benefit:</b> Greatly reduces CPU overhead; CPU remains free to execute other processes concurrently.</li>
+          </ul>
+        </div>
+
+        <!-- Q326: Malware Types -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Program Threats: Virus vs Worm vs Trojan vs Trapdoor</span>
+            <span class="theory-unit">Unit 9 · Q326</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Virus:</b> Malicious code segment that attaches itself to legitimate host files and reproduces when host runs.</li>
+            <li><b>Worm:</b> <i>Self-contained, independent</i> program that replicates across computer networks consuming bandwidth/memory.</li>
+            <li><b>Trojan Horse:</b> Deceptive program appearing completely benign/useful while covertly performing unauthorized malicious acts.</li>
+            <li><b>Trapdoor (Backdoor):</b> Hidden entry point intentionally left in code to bypass standard authentication controls.</li>
+          </ul>
+        </div>
+
+        <!-- Q343 & 344: Unix Shell & Directory -->
+        <div class="theory-card">
+          <div class="theory-title">
+            <span>Role of Shell, Kernel, & Unix File System</span>
+            <span class="theory-unit">Unit 10 · Q343/344</span>
+          </div>
+          <ul class="theory-list">
+            <li><b>Kernel:</b> Core master software running in privileged mode managing CPU, memory, device I/O, and system calls.</li>
+            <li><b>Shell:</b> Command-line interpreter acting as interface between user and kernel (reads command &rarr; parses &rarr; executes).</li>
+            <li><b>Unix Hierarchical File System:</b>
+              <code>/</code> (root),
+              <code>/bin</code> (essential user binaries: ls, cp),
+              <code>/etc</code> (system config files),
+              <code>/dev</code> (device special files),
+              <code>/home</code> (user home dirs),
+              <code>/var</code> (variable log files).
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ======================================================== -->
+    <!-- SECTION 4: SHELL SCRIPTING GUIDE & PROGRAMS (UNIT 10)     -->
+    <!-- ======================================================== -->
+    <section id="scripts">
+      <div class="section-header">
+        <div class="section-title">
+          <span>Part 4: Linux Shell Scripting Rapid Guide & Programs</span>
+          <span class="section-tag">Unit 10 · 12% Weightage</span>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--text-muted);">
+          Key syntax rules + 5 essential exam scripts with clean commented logic
+        </div>
+      </div>
+
+      <!-- Quick Syntax Cheat Sheet -->
+      <div class="card" style="margin-bottom: 20px;">
+        <h4 style="color: #fff; margin-bottom: 10px;">⚡ Shell Syntax Essentials in 2 Minutes</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; font-size: 0.84rem; color: #cbd5e1;">
+          <div style="background: #090a10; padding: 10px; border-radius: 4px; border: 1px solid var(--card-border);">
+            <b style="color: var(--accent-cyan);">1. Reading Input:</b><br>
+            <code>echo "Enter num:"</code><br>
+            <code>read n</code>
+          </div>
+          <div style="background: #090a10; padding: 10px; border-radius: 4px; border: 1px solid var(--card-border);">
+            <b style="color: var(--accent-cyan);">2. Arithmetic Operations:</b><br>
+            <code>rem=$(( n % 10 ))</code><br>
+            <code>rev=$(( rev * 10 + rem ))</code>
+          </div>
+          <div style="background: #090a10; padding: 10px; border-radius: 4px; border: 1px solid var(--card-border);">
+            <b style="color: var(--accent-cyan);">3. If-Else Conditions:</b><br>
+            <code>if [ $a -gt $b ]; then</code><br>
+            <code>&nbsp;&nbsp;...</code><br>
+            <code>fi</code> (Mind spaces around <code>[ ]</code>!)
+          </div>
+          <div style="background: #090a10; padding: 10px; border-radius: 4px; border: 1px solid var(--card-border);">
+            <b style="color: var(--accent-cyan);">4. Loops:</b><br>
+            <code>while [ $n -gt 0 ]; do ... done</code><br>
+            <code>for i in 1 2 3 4 5; do ... done</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Script 1: Multiplication Table -->
+      <div class="script-block">
+        <div class="script-header">
+          <div class="script-title">
+            <span>1. Print Multiplication Table of Given Number (Q345)</span>
+          </div>
+          <button class="copy-btn" onclick="copyCode('code-table')">Copy Script</button>
+        </div>
+        <pre id="code-table"><span class="comment">#!/bin/bash</span>
+<span class="command">echo</span> -n <span class="string">"Enter a number: "</span>
+<span class="command">read</span> <span class="var">num</span>
+
+<span class="keyword">echo</span> <span class="string">"--- Multiplication Table for $num ---"</span>
+<span class="keyword">for</span> <span class="var">i</span> in {1..10}
+<span class="keyword">do</span>
+  <span class="var">ans</span>=$(( <span class="var">num</span> * <span class="var">i</span> ))
+  <span class="command">echo</span> <span class="string">"$num x $i = $ans"</span>
+<span class="keyword">done</span></pre>
+      </div>
+
+      <!-- Script 2: Reverse of a Given Number -->
+      <div class="script-block">
+        <div class="script-header">
+          <div class="script-title">
+            <span>2. Find Reverse of Given Number (Q346)</span>
+          </div>
+          <button class="copy-btn" onclick="copyCode('code-rev')">Copy Script</button>
+        </div>
+        <pre id="code-rev"><span class="comment">#!/bin/bash</span>
+<span class="command">echo</span> -n <span class="string">"Enter a number: "</span>
+<span class="command">read</span> <span class="var">num</span>
+
+<span class="var">rev</span>=0
+<span class="var">temp</span>=$<span class="var">num</span>
+
+<span class="keyword">while</span> [ $<span class="var">temp</span> -gt 0 ]
+<span class="keyword">do</span>
+  <span class="var">rem</span>=$(( <span class="var">temp</span> % 10 ))
+  <span class="var">rev</span>=$(( <span class="var">rev</span> * 10 + <span class="var">rem</span> ))
+  <span class="var">temp</span>=$(( <span class="var">temp</span> / 10 ))
+<span class="keyword">done</span>
+
+<span class="command">echo</span> <span class="string">"Reversed Number: $rev"</span></pre>
+      </div>
+
+      <!-- Script 3: Palindrome String -->
+      <div class="script-block">
+        <div class="script-header">
+          <div class="script-title">
+            <span>3. Check if Entered String is Palindrome or Not (Q349)</span>
+          </div>
+          <button class="copy-btn" onclick="copyCode('code-pal')">Copy Script</button>
+        </div>
+        <pre id="code-pal"><span class="comment">#!/bin/bash</span>
+<span class="command">echo</span> -n <span class="string">"Enter a string: "</span>
+<span class="command">read</span> <span class="var">str</span>
+
+<span class="comment"># Reverse using standard rev command</span>
+<span class="var">revstr</span>=$(<span class="command">echo</span> <span class="string">"$str"</span> | <span class="command">rev</span>)
+
+<span class="keyword">if</span> [ <span class="string">"$str"</span> = <span class="string">"$revstr"</span> ]; <span class="keyword">then</span>
+  <span class="command">echo</span> <span class="string">"Result: '$str' is a Palindrome."</span>
+<span class="keyword">else</span>
+  <span class="command">echo</span> <span class="string">"Result: '$str' is NOT a Palindrome."</span>
+<span class="keyword">fi</span></pre>
+      </div>
+
+      <!-- Script 4: Greatest of Three Numbers -->
+      <div class="script-block">
+        <div class="script-header">
+          <div class="script-title">
+            <span>4. Find Greatest Number from Three Numbers (Q351)</span>
+          </div>
+          <button class="copy-btn" onclick="copyCode('code-great')">Copy Script</button>
+        </div>
+        <pre id="code-great"><span class="comment">#!/bin/bash</span>
+<span class="command">echo</span> <span class="string">"Enter three numbers: "</span>
+<span class="command">read</span> <span class="var">a</span> <span class="var">b</span> <span class="var">c</span>
+
+<span class="keyword">if</span> [ $<span class="var">a</span> -ge $<span class="var">b</span> ] &amp;&amp; [ $<span class="var">a</span> -ge $<span class="var">c</span> ]; <span class="keyword">then</span>
+  <span class="command">echo</span> <span class="string">"Greatest number is: $a"</span>
+<span class="keyword">elif</span> [ $<span class="var">b</span> -ge $<span class="var">a</span> ] &amp;&amp; [ $<span class="var">b</span> -ge $<span class="var">c</span> ]; <span class="keyword">then</span>
+  <span class="command">echo</span> <span class="string">"Greatest number is: $b"</span>
+<span class="keyword">else</span>
+  <span class="command">echo</span> <span class="string">"Greatest number is: $c"</span>
+<span class="keyword">fi</span></pre>
+      </div>
+
+      <!-- Script 5: Armstrong Number -->
+      <div class="script-block">
+        <div class="script-header">
+          <div class="script-title">
+            <span>5. Check Whether Given Number is Armstrong or Not (Q347)</span>
+          </div>
+          <button class="copy-btn" onclick="copyCode('code-arm')">Copy Script</button>
+        </div>
+        <pre id="code-arm"><span class="comment">#!/bin/bash</span>
+<span class="command">echo</span> -n <span class="string">"Enter a number: "</span>
+<span class="command">read</span> <span class="var">num</span>
+
+<span class="var">sum</span>=0
+<span class="var">temp</span>=$<span class="var">num</span>
+
+<span class="keyword">while</span> [ $<span class="var">temp</span> -gt 0 ]
+<span class="keyword">do</span>
+  <span class="var">r</span>=$(( <span class="var">temp</span> % 10 ))
+  <span class="var">sum</span>=$(( <span class="var">sum</span> + (r * r * r) ))
+  <span class="var">temp</span>=$(( <span class="var">temp</span> / 10 ))
+<span class="keyword">done</span>
+
+<span class="keyword">if</span> [ $<span class="var">sum</span> -eq $<span class="var">num</span> ]; <span class="keyword">then</span>
+  <span class="command">echo</span> <span class="string">"$num is an Armstrong number."</span>
+<span class="keyword">else</span>
+  <span class="command">echo</span> <span class="string">"$num is NOT an Armstrong number."</span>
+<span class="keyword">fi</span></pre>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div>Operating Systems T2 Exam Prep &bull; Chapters 6, 7, 8, 9, 10</div>
+      <div style="margin-top: 6px; font-size: 0.78rem;">Good luck for your exam tomorrow! Focus on Numericals & MCQs first.</div>
+    </footer>
+
+  </div>
+
+  <script>
+    // MCQ Unit Filter
+    function filterMCQ(unit, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const items = document.querySelectorAll('.mcq-item');
+      items.forEach(item => {
+        if (unit === 'all' || item.getAttribute('data-unit') === unit) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    // Toggle Answers visibility for self-testing
+    let answersVisible = true;
+    function toggleAnswers() {
+      answersVisible = !answersVisible;
+      const expls = document.querySelectorAll('.mcq-expl');
+      const correctBoxes = document.querySelectorAll('.opt-box.correct');
+
+      expls.forEach(e => e.style.display = answersVisible ? 'block' : 'none');
+      correctBoxes.forEach(cb => {
+        if (answersVisible) {
+          cb.style.borderColor = 'var(--accent-green)';
+          cb.style.background = 'rgba(16, 185, 129, 0.08)';
+        } else {
+          cb.style.borderColor = '#1a1e2b';
+          cb.style.background = '#08090e';
+        }
+      });
+    }
+
+    // Copy Code Helper
+    function copyCode(id) {
+      const text = document.getElementById(id).innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        alert('Script copied to clipboard!');
+      });
+    }
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-btn').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        document.querySelectorAll('.nav-btn').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
